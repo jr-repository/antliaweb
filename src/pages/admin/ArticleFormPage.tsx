@@ -102,6 +102,15 @@ const ArticleFormPage = () => {
     });
   };
 
+  // Handle reading time change separately as it's a number
+  const handleReadingTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value ? parseInt(e.target.value) : undefined;
+    setArticle({
+      ...article,
+      readingTime: value
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -323,16 +332,7 @@ const ArticleFormPage = () => {
                     type="number"
                     placeholder="Waktu baca dalam menit"
                     value={article.readingTime || ""}
-                    onChange={(e) => 
-                      handleInputChange({
-                        ...e,
-                        target: {
-                          ...e.target,
-                          name: "readingTime",
-                          value: e.target.value ? parseInt(e.target.value) : undefined
-                        }
-                      })
-                    }
+                    onChange={handleReadingTimeChange}
                     min="1"
                   />
                 </div>
