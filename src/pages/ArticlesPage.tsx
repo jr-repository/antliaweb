@@ -1,20 +1,71 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { sampleArticles } from "@/data/articles";
+import { supabase } from "@/integrations/supabase/client";
+import { Article } from "@/types/article";
+import { useToast } from "@/components/ui/use-toast";
 
 const ArticlesPage = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const { toast } = useToast();
   
+  // Fetch articles from Supabase
+  useEffect(() => {
+    const fetchArticles = async () => {
+      setIsLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("articles")
+          .select("*")
+          .eq("status", "published")
+          .order("published_at", { ascending: false });
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          setArticles(data.map(article => ({
+            id: article.id,
+            title: article.title,
+            slug: article.slug,
+            content: article.content,
+            excerpt: article.excerpt,
+            author: article.author,
+            authorEmail: article.author_email,
+            category: article.category,
+            keywords: article.keywords || [],
+            createdAt: article.created_at,
+            updatedAt: article.updated_at,
+            publishedAt: article.published_at,
+            coverImage: article.cover_image,
+            status: article.status,
+            readingTime: article.reading_time
+          })));
+        }
+      } catch (error: any) {
+        toast({
+          title: "Error",
+          description: `Gagal mengambil data artikel: ${error.message}`,
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, [toast]);
+
   // Filter articles based on search term
-  const filteredArticles = sampleArticles.filter(article => 
-    article.status === "published" && (
-      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.keywords.some(keyword => 
-        keyword.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+  const filteredArticles = articles.filter(article => 
+    article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    article.keywords.some(keyword => 
+      keyword.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
@@ -35,7 +86,12 @@ const ArticlesPage = () => {
         />
       </div>
       
-      {filteredArticles.length === 0 ? (
+      {isLoading ? (
+        <div className="text-center py-16">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-antlia-blue"></div>
+          <p className="mt-4 text-gray-600">Memuat artikel...</p>
+        </div>
+      ) : filteredArticles.length === 0 ? (
         <div className="text-center py-8">
           <p className="text-xl text-gray-600">Tidak ada artikel yang ditemukan</p>
         </div>

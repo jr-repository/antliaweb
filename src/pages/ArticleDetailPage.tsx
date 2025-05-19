@@ -1,16 +1,82 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { sampleArticles } from "@/data/articles";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Article } from "@/types/article";
+import { useToast } from "@/components/ui/use-toast";
 
 const ArticleDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { toast } = useToast();
   
-  const article = sampleArticles.find((article) => article.slug === slug);
+  const [article, setArticle] = useState<Article | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      setIsLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("articles")
+          .select("*")
+          .eq("slug", slug)
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          setArticle({
+            id: data.id,
+            title: data.title,
+            slug: data.slug,
+            content: data.content,
+            excerpt: data.excerpt,
+            author: data.author,
+            authorEmail: data.author_email,
+            category: data.category,
+            keywords: data.keywords || [],
+            createdAt: data.created_at,
+            updatedAt: data.updated_at,
+            publishedAt: data.published_at,
+            coverImage: data.cover_image,
+            status: data.status,
+            readingTime: data.reading_time
+          });
+        }
+      } catch (error: any) {
+        if (error.code === 'PGRST116') {
+          // Not found, handle silently as we'll show a not found message
+        } else {
+          toast({
+            title: "Error",
+            description: `Gagal mengambil artikel: ${error.message}`,
+            variant: "destructive",
+          });
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (slug) {
+      fetchArticle();
+    }
+  }, [slug, toast]);
   
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-4 py-12 text-center">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-antlia-blue"></div>
+        <p className="mt-4 text-gray-600">Memuat artikel...</p>
+      </div>
+    );
+  }
+
   if (!article) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">

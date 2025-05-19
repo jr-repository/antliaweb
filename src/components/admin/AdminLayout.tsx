@@ -4,31 +4,75 @@ import { Outlet, useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { FileText, Home, Layout, LogOut, Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 const AdminLayout = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   useEffect(() => {
-    const checkAuth = () => {
-      const auth = localStorage.getItem("antlia_admin_auth");
-      if (auth) {
-        const { isAuthenticated: authStatus } = JSON.parse(auth);
-        setIsAuthenticated(authStatus);
-      } else {
+    const checkAuth = async () => {
+      setIsLoading(true);
+      const { data } = await supabase.auth.getSession();
+      
+      if (!data.session) {
         navigate("/admin");
+        return;
       }
+      
+      setIsAuthenticated(true);
+      setIsLoading(false);
     };
 
+    // Set up auth listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === "SIGNED_OUT") {
+          setIsAuthenticated(false);
+          navigate("/admin");
+        } else if (event === "SIGNED_IN" && session) {
+          setIsAuthenticated(true);
+        }
+      }
+    );
+
     checkAuth();
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("antlia_admin_auth");
-    navigate("/admin");
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast({
+        title: "Logout berhasil",
+        description: "Anda telah keluar dari sistem.",
+        variant: "default",
+      });
+      navigate("/admin");
+    } catch (error) {
+      toast({
+        title: "Logout gagal",
+        description: "Terjadi kesalahan saat mencoba keluar.",
+        variant: "destructive",
+      });
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-antlia-blue"></div>
+      </div>
+    );
+  }
 
   if (!isAuthenticated) {
     return null;

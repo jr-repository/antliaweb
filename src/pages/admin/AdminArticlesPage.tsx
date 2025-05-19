@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
@@ -25,31 +25,86 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Edit, Eye, MoreVertical, Plus, Search, Trash } from "lucide-react";
-import { sampleArticles } from "@/data/articles";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { Article } from "@/types/article";
 
 const AdminArticlesPage = () => {
-  const [articles, setArticles] = useState([...sampleArticles]);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  // Fetch articles from Supabase
+  useEffect(() => {
+    const fetchArticles = async () => {
+      setIsLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("articles")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          setArticles(data.map(article => ({
+            ...article,
+            keywords: article.keywords || []
+          })));
+        }
+      } catch (error: any) {
+        toast({
+          title: "Error",
+          description: `Gagal mengambil data artikel: ${error.message}`,
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, [toast]);
 
   // Filter articles based on search term
   const filteredArticles = articles.filter(article =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     article.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    article.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm.toLowerCase()))
+    (article.keywords && article.keywords.some(keyword => 
+      keyword.toLowerCase().includes(searchTerm.toLowerCase())
+    ))
   );
 
-  const handleDeleteArticle = (id: string) => {
+  const handleDeleteArticle = async (id: string) => {
     if (confirm("Yakin ingin menghapus artikel ini?")) {
-      setArticles(articles.filter(article => article.id !== id));
-      
-      toast({
-        title: "Artikel berhasil dihapus",
-        description: "Artikel telah dihapus dari sistem.",
-        variant: "default",
-      });
+      try {
+        const { error } = await supabase
+          .from("articles")
+          .delete()
+          .eq("id", id);
+
+        if (error) {
+          throw error;
+        }
+
+        setArticles(articles.filter(article => article.id !== id));
+        
+        toast({
+          title: "Artikel berhasil dihapus",
+          description: "Artikel telah dihapus dari sistem.",
+          variant: "default",
+        });
+      } catch (error: any) {
+        toast({
+          title: "Gagal menghapus artikel",
+          description: error.message,
+          variant: "destructive",
+        });
+      }
     }
   };
 
@@ -97,7 +152,16 @@ const AdminArticlesPage = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredArticles.length === 0 ? (
+                {isLoading ? (
+                  <TableRow>
+                    <TableCell colSpan={5} className="text-center py-8">
+                      <div className="flex justify-center">
+                        <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-antlia-blue"></div>
+                      </div>
+                      <p className="mt-2 text-gray-500">Mengambil data...</p>
+                    </TableCell>
+                  </TableRow>
+                ) : filteredArticles.length === 0 ? (
                   <TableRow>
                     <TableCell colSpan={5} className="text-center py-8 text-gray-500">
                       Tidak ada artikel yang ditemukan

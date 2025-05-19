@@ -22,15 +22,17 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Save } from "lucide-react";
-import { sampleArticles } from "@/data/articles";
 import { Article } from "@/types/article";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ArticleFormPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const isEditMode = id !== "new";
+  const isEditMode = id !== undefined && id !== "new";
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   const emptyArticle: Article = {
     id: "",
@@ -49,15 +51,60 @@ const ArticleFormPage = () => {
   const [article, setArticle] = useState<Article>(emptyArticle);
   const [keywordsInput, setKeywordsInput] = useState("");
 
+  // Fetch article data if in edit mode
   useEffect(() => {
-    if (isEditMode) {
-      const foundArticle = sampleArticles.find((a) => a.id === id);
-      if (foundArticle) {
-        setArticle(foundArticle);
-        setKeywordsInput(foundArticle.keywords.join(", "));
+    const fetchArticle = async () => {
+      if (!isEditMode) return;
+      
+      setIsLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("articles")
+          .select()
+          .eq("id", id)
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          // Transform database article to our Article type
+          const fetchedArticle: Article = {
+            id: data.id,
+            title: data.title,
+            slug: data.slug,
+            content: data.content,
+            excerpt: data.excerpt,
+            author: data.author,
+            authorEmail: data.author_email,
+            category: data.category,
+            keywords: data.keywords || [],
+            createdAt: data.created_at,
+            updatedAt: data.updated_at,
+            publishedAt: data.published_at,
+            status: data.status,
+            coverImage: data.cover_image,
+            readingTime: data.reading_time
+          };
+
+          setArticle(fetchedArticle);
+          setKeywordsInput(fetchedArticle.keywords.join(", "));
+        }
+      } catch (error: any) {
+        toast({
+          title: "Error",
+          description: `Gagal mengambil data artikel: ${error.message}`,
+          variant: "destructive",
+        });
+        navigate("/admin/articles");
+      } finally {
+        setIsLoading(false);
       }
-    }
-  }, [id, isEditMode]);
+    };
+
+    fetchArticle();
+  }, [id, isEditMode, navigate, toast]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -111,20 +158,71 @@ const ArticleFormPage = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSaving(true);
     
-    // Here we would normally send the data to Supabase
-    // For now, we'll just show a success message
-    
-    toast({
-      title: `Artikel berhasil ${isEditMode ? "diperbarui" : "dibuat"}`,
-      description: `Artikel "${article.title}" telah ${isEditMode ? "diperbarui" : "dibuat"}.`,
-      variant: "default",
-    });
-    
-    navigate("/admin/articles");
+    try {
+      // Prepare data for Supabase - convert our Article type to database format
+      const articleData = {
+        title: article.title,
+        slug: article.slug,
+        content: article.content,
+        excerpt: article.excerpt,
+        author: article.author,
+        author_email: article.authorEmail,
+        keywords: article.keywords,
+        category: article.category,
+        reading_time: article.readingTime,
+        cover_image: article.coverImage,
+        status: article.status,
+        published_at: new Date(article.publishedAt).toISOString()
+      };
+
+      let result;
+      
+      if (isEditMode) {
+        // Update existing article
+        result = await supabase
+          .from("articles")
+          .update(articleData)
+          .eq("id", article.id);
+      } else {
+        // Insert new article
+        result = await supabase
+          .from("articles")
+          .insert([articleData]);
+      }
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      toast({
+        title: `Artikel berhasil ${isEditMode ? "diperbarui" : "dibuat"}`,
+        description: `Artikel "${article.title}" telah ${isEditMode ? "diperbarui" : "dibuat"}.`,
+        variant: "default",
+      });
+      
+      navigate("/admin/articles");
+    } catch (error: any) {
+      toast({
+        title: `Gagal ${isEditMode ? "memperbarui" : "membuat"} artikel`,
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSaving(false);
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-antlia-blue"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -347,6 +445,17 @@ const ArticleFormPage = () => {
                     onChange={handleInputChange}
                   />
                 </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="coverImage">URL Gambar Cover</Label>
+                  <Input
+                    id="coverImage"
+                    name="coverImage"
+                    placeholder="https://example.com/image.jpg"
+                    value={article.coverImage || ""}
+                    onChange={handleInputChange}
+                  />
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -434,9 +543,13 @@ const ArticleFormPage = () => {
           >
             Batal
           </Button>
-          <Button type="submit" className="bg-antlia-blue hover:bg-blue-600">
+          <Button 
+            type="submit" 
+            className="bg-antlia-blue hover:bg-blue-600"
+            disabled={isSaving}
+          >
             <Save className="mr-2 h-4 w-4" />
-            Simpan Artikel
+            {isSaving ? "Menyimpan..." : "Simpan Artikel"}
           </Button>
         </div>
       </form>

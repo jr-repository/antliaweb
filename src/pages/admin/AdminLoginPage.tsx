@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,43 +7,65 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
-
-// Static credentials (will be replaced with Supabase auth)
-const ADMIN_USERNAME = "antlia";
-const ADMIN_PASSWORD = "antliaadmin";
+import { supabase } from "@/integrations/supabase/client";
 
 const AdminLoginPage = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("antlia@admin.com");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        navigate("/admin/dashboard");
+      }
+    };
+    
+    checkAuth();
+  }, [navigate]);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        toast({
+          title: "Login gagal",
+          description: error.message,
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      if (data.session) {
         toast({
           title: "Login berhasil",
           description: "Anda telah berhasil masuk ke panel admin.",
           variant: "default",
         });
-        // Store auth state in localStorage (temporary solution until Supabase)
-        localStorage.setItem("antlia_admin_auth", JSON.stringify({ isAuthenticated: true }));
         navigate("/admin/dashboard");
-      } else {
-        toast({
-          title: "Login gagal",
-          description: "Username atau password tidak valid.",
-          variant: "destructive",
-        });
       }
+    } catch (error) {
+      toast({
+        title: "Login gagal",
+        description: "Terjadi kesalahan saat mencoba login.",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -66,15 +88,16 @@ const AdminLoginPage = () => {
           <form onSubmit={handleLogin}>
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="email">Email</Label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-4 w-4" />
                   <Input
-                    id="username"
-                    placeholder="Username"
+                    id="email"
+                    type="email"
+                    placeholder="Email"
                     className="pl-10"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>

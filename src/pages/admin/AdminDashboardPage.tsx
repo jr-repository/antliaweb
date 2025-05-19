@@ -1,19 +1,86 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Users, Calendar } from "lucide-react";
-import { sampleArticles } from "@/data/articles";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
+import { Link } from "react-router-dom";
 
 const AdminDashboardPage = () => {
-  // Get data statistics
-  const totalArticles = sampleArticles.length;
-  const publishedArticles = sampleArticles.filter(article => article.status === "published").length;
-  const draftArticles = sampleArticles.filter(article => article.status === "draft").length;
+  const [statistics, setStatistics] = useState({
+    totalArticles: 0,
+    publishedArticles: 0,
+    draftArticles: 0,
+    uniqueAuthors: 0,
+    monthlyArticles: 0
+  });
+  const [recentArticles, setRecentArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
 
-  // Get recent articles
-  const recentArticles = [...sampleArticles]
-    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
-    .slice(0, 5);
+  // Fetch dashboard data from Supabase
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      setIsLoading(true);
+      try {
+        // Get all articles
+        const { data: allArticles, error: articlesError } = await supabase
+          .from("articles")
+          .select("*")
+          .order("updated_at", { ascending: false });
+
+        if (articlesError) throw articlesError;
+
+        if (allArticles) {
+          // Calculate statistics
+          const published = allArticles.filter(a => a.status === "published").length;
+          const drafts = allArticles.filter(a => a.status === "draft").length;
+          
+          // Get unique authors
+          const uniqueAuthors = new Set(allArticles.map(a => a.author)).size;
+
+          // Get articles published this month
+          const now = new Date();
+          const currentMonth = now.getMonth();
+          const currentYear = now.getFullYear();
+          const monthlyArticles = allArticles.filter(article => {
+            const date = new Date(article.published_at);
+            return date.getMonth() === currentMonth && date.getFullYear() === currentYear;
+          }).length;
+
+          // Set statistics
+          setStatistics({
+            totalArticles: allArticles.length,
+            publishedArticles: published,
+            draftArticles: drafts,
+            uniqueAuthors,
+            monthlyArticles
+          });
+
+          // Set recent articles (at most 5)
+          setRecentArticles(allArticles.slice(0, 5));
+        }
+      } catch (error: any) {
+        toast({
+          title: "Error",
+          description: `Gagal mengambil data: ${error.message}`,
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, [toast]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-antlia-blue"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
@@ -31,9 +98,9 @@ const AdminDashboardPage = () => {
             <FileText className="h-5 w-5 text-antlia-blue" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{totalArticles}</div>
+            <div className="text-3xl font-bold">{statistics.totalArticles}</div>
             <p className="text-sm text-gray-600 mt-1">
-              {publishedArticles} dipublikasikan, {draftArticles} draft
+              {statistics.publishedArticles} dipublikasikan, {statistics.draftArticles} draft
             </p>
           </CardContent>
         </Card>
@@ -47,7 +114,7 @@ const AdminDashboardPage = () => {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">
-              {new Set(sampleArticles.map(article => article.author)).size}
+              {statistics.uniqueAuthors}
             </div>
             <p className="text-sm text-gray-600 mt-1">
               Total penulis aktif
@@ -64,12 +131,7 @@ const AdminDashboardPage = () => {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">
-              {sampleArticles.filter(article => {
-                const date = new Date(article.publishedAt);
-                const now = new Date();
-                return date.getMonth() === now.getMonth() && 
-                       date.getFullYear() === now.getFullYear();
-              }).length}
+              {statistics.monthlyArticles}
             </div>
             <p className="text-sm text-gray-600 mt-1">
               Artikel dipublikasikan bulan ini
@@ -94,26 +156,36 @@ const AdminDashboardPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {recentArticles.map((article) => (
-                  <tr key={article.id} className="bg-white border-b">
-                    <td className="px-6 py-4 font-medium text-gray-900">
-                      {article.title}
-                    </td>
-                    <td className="px-6 py-4">{article.author}</td>
-                    <td className="px-6 py-4">
-                      <span className={`px-2 py-1 rounded-full text-xs ${
-                        article.status === "published" 
-                          ? "bg-green-100 text-green-800" 
-                          : "bg-yellow-100 text-yellow-800"
-                      }`}>
-                        {article.status === "published" ? "Dipublikasikan" : "Draft"}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      {new Date(article.updatedAt).toLocaleDateString('id-ID')}
+                {recentArticles.length > 0 ? (
+                  recentArticles.map((article: any) => (
+                    <tr key={article.id} className="bg-white border-b">
+                      <td className="px-6 py-4 font-medium text-gray-900">
+                        <Link to={`/admin/articles/edit/${article.id}`} className="hover:text-antlia-blue">
+                          {article.title}
+                        </Link>
+                      </td>
+                      <td className="px-6 py-4">{article.author}</td>
+                      <td className="px-6 py-4">
+                        <span className={`px-2 py-1 rounded-full text-xs ${
+                          article.status === "published" 
+                            ? "bg-green-100 text-green-800" 
+                            : "bg-yellow-100 text-yellow-800"
+                        }`}>
+                          {article.status === "published" ? "Dipublikasikan" : "Draft"}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        {new Date(article.updated_at).toLocaleDateString('id-ID')}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-4 text-center text-gray-500">
+                      Belum ada artikel
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>
