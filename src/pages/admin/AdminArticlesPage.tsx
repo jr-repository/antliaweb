@@ -51,10 +51,25 @@ const AdminArticlesPage = () => {
         }
 
         if (data) {
-          setArticles(data.map(article => ({
-            ...article,
-            keywords: article.keywords || []
-          })));
+          const mappedArticles: Article[] = data.map(article => ({
+            id: article.id,
+            title: article.title,
+            slug: article.slug,
+            content: article.content,
+            excerpt: article.excerpt,
+            author: article.author,
+            authorEmail: article.author_email,
+            category: article.category,
+            keywords: article.keywords || [],
+            createdAt: article.created_at,
+            updatedAt: article.updated_at,
+            publishedAt: article.published_at,
+            coverImage: article.cover_image,
+            status: article.status,
+            readingTime: article.reading_time
+          }));
+          
+          setArticles(mappedArticles);
         }
       } catch (error: any) {
         toast({

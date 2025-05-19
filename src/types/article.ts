@@ -13,7 +13,7 @@ export interface Article {
   updatedAt: string;
   publishedAt: string;
   coverImage?: string;
-  status: "draft" | "published";
+  status: string; // Changed from "draft" | "published" to string to match Supabase data
   readingTime?: number;
   category?: string;
 }

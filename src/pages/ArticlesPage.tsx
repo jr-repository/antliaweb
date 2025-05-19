@@ -28,7 +28,7 @@ const ArticlesPage = () => {
         }
 
         if (data) {
-          setArticles(data.map(article => ({
+          const mappedArticles: Article[] = data.map(article => ({
             id: article.id,
             title: article.title,
             slug: article.slug,
@@ -44,7 +44,9 @@ const ArticlesPage = () => {
             coverImage: article.cover_image,
             status: article.status,
             readingTime: article.reading_time
-          })));
+          }));
+          
+          setArticles(mappedArticles);
         }
       } catch (error: any) {
         toast({
