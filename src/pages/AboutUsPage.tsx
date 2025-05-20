@@ -86,23 +86,17 @@ const AboutUsPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
-              <span className="subtitle block mb-2">Our Story</span>
-              <h2 className="text-3xl font-bold mb-6">Sejarah ANTLIA</h2>
+              <span className="subtitle block mb-2">Cerita Kami</span>
+              <h2 className="text-3xl font-bold mb-6">Tentang ANTLIA</h2>
               <p className="text-gray-600 mb-4">
-                Didirikan pada tahun 2013, ANTLIA bermula sebagai startup kecil dengan visi besar: 
-                menghadirkan solusi teknologi kelas dunia yang dapat diakses oleh perusahaan Indonesia.
+              Terinspirasi dari konstelasi Antlia yang berarti “pompa”, kami hadir sebagai energi pendorong inovasi di dunia digital. Filosofi ini sejalan dengan visi misi kami: mendukung pertumbuhan ekonomi global lewat solusi teknologi yang efisien, hemat biaya, dan ramah lingkungan.
               </p>
               <p className="text-gray-600 mb-4">
-                Nama ANTLIA diambil dari konstelasi bintang yang melambangkan teknologi dan inovasi. 
-                Kami percaya bahwa seperti bintang yang memberikan cahaya, teknologi harus memberikan 
-                pencerahan dan solusi bagi tantangan bisnis.
+              Lewat produk seperti POS, ERP, WMS, TMS, HRM, CRM, , IoT, dan 3PL kami menghadirkan sistem yang saling terhubung untuk membangun rantai pasok yang transparan, kolaboratif, dan berkelanjutan. Tidak hanya itu, Antlia memiliki servis berupa Business Operational Consulting, Excel Training, dan Workplace Communication Training.  
+
               </p>
               <p className="text-gray-600">
-                Setelah satu dekade berkarya, kami telah berkembang menjadi perusahaan teknologi 
-                terkemuka dengan tim yang terdiri dari lebih dari 50 ahli di bidangnya masing-masing.
-                Perjalanan kami dilandasi oleh komitmen kuat untuk selalu berinovasi dan memberikan 
-                pelayanan terbaik kepada klien, menciptakan hubungan jangka panjang yang berlandaskan 
-                kepercayaan dan hasil nyata.
+              Sebagai bagian dari Techno King, Antlia siap tumbuh bersama Anda dengan teknologi yang relevan, berdampak, dan bernilai jangka panjang.
               </p>
             </div>
             <div className="relative animate-on-scroll" style={{animationDelay: "200ms"}}>
@@ -121,7 +115,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-16 bg-antlia-light overflow-x-hidden">
+      {/* <section className="py-16 bg-antlia-light overflow-x-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Journey</span>
@@ -184,7 +178,7 @@ const AboutUsPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Vision & Mission */}
       <section className="py-16 bg-white">
@@ -202,10 +196,10 @@ const AboutUsPage = () => {
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-4 text-antlia-blue">Visi Kami</h3>
                 <p className="text-gray-600 mb-6">
-                  Menjadi pemimpin inovasi teknologi di Indonesia yang mendorong 
-                  transformasi digital dengan solusi yang inklusif dan berkelanjutan.
+                Mendukung pertumbuhan ekonomi global dengan memberikan solusi teknologi rantai pasokan inovatif yang meningkatkan produktivitas, mengurangi biaya, dan meminimalkan dampak lingkungan.
+
                 </p>
-                <ul className="space-y-3">
+                {/* <ul className="space-y-3">
                   <li className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-antlia-blue mr-2 flex-shrink-0" />
                     <span>Mendorong adopsi teknologi terdepan</span>
@@ -218,7 +212,7 @@ const AboutUsPage = () => {
                     <CheckCircle className="w-5 h-5 text-antlia-blue mr-2 flex-shrink-0" />
                     <span>Menciptakan ekosistem teknologi yang berkelanjutan</span>
                   </li>
-                </ul>
+                </ul> */}
               </CardContent>
             </Card>
             
@@ -232,15 +226,29 @@ const AboutUsPage = () => {
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-antlia-cyan mr-2 flex-shrink-0" />
-                    <span>Mengembangkan talenta digital Indonesia</span>
+                    <span>Mengembangkan dan menerapkan teknologi canggih</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-antlia-cyan mr-2 flex-shrink-0" />
-                    <span>Memberikan solusi teknologi yang disesuaikan dengan kebutuhan lokal</span>
+                    <span>Membangun ekosistem kolaboratif yang kuat dengan mitra industri
+</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-antlia-cyan mr-2 flex-shrink-0" />
-                    <span>Mendukung UKM dalam adopsi teknologi</span>
+                    <span>Menyediakan platform teknologi yang komprehensif</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-antlia-cyan mr-2 flex-shrink-0" />
+                    <span>Mendorong penerapan teknologi berkelanjutan dalam rantai pasokan</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-antlia-cyan mr-2 flex-shrink-0" />
+                    <span>Membangun rantai pasokan yang transparan dan dapat dilacak</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-antlia-cyan mr-2 flex-shrink-0" />
+                    <span>Memberikan kontribusi positif bagi masyarakat
+f</span>
                   </li>
                 </ul>
               </CardContent>
@@ -250,7 +258,7 @@ const AboutUsPage = () => {
       </section>
       
       {/* Core Values */}
-      <section className="py-16 bg-antlia-light">
+      {/* <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Guiding Principles</span>
@@ -299,15 +307,17 @@ const AboutUsPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+
       
       {/* Team Section */}
-      <TeamSection 
+      {/* <TeamSection 
         title="Tim Kami" 
         subtitle="Meet The Experts"
         description="Didukung oleh profesional berpengalaman yang berdedikasi untuk memberikan yang terbaik"
         members={teamMembers}
-      />
+      /> */}
       
       {/* Partners */}
       <LogoMarquee 

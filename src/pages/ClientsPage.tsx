@@ -24,42 +24,38 @@ interface CaseStudy {
 }
 
 const clients: Client[] = [
-  { id: 1, name: "Bank Nusantara", logo: "/assets/client-1.png", industry: "Perbankan & Keuangan", featured: true },
-  { id: 2, name: "Tech Innovations", logo: "/assets/client-2.png", industry: "Teknologi", featured: true },
-  { id: 3, name: "MegaRetail Group", logo: "/assets/client-3.png", industry: "Ritel & E-commerce", featured: true },
-  { id: 4, name: "Indo Manufactur", logo: "/assets/client-4.png", industry: "Manufaktur", featured: true },
-  { id: 5, name: "Health Solutions", logo: "/assets/client-5.png", industry: "Kesehatan", featured: false },
-  { id: 6, name: "EduTech Indonesia", logo: "/assets/client-6.png", industry: "Pendidikan", featured: false },
-  { id: 7, name: "LogisticsPro", logo: "/assets/client-7.png", industry: "Transportasi & Logistik", featured: false },
-  { id: 8, name: "Media Connect", logo: "/assets/client-8.png", industry: "Media & Hiburan", featured: false }
+  { id: 1, name: "Bank Nusantara", logo: "/assets/partner-1.png", industry: "Perbankan & Keuangan", featured: true },
+  { id: 2, name: "Tech Innovations", logo: "/assets/partner-1.png", industry: "Teknologi", featured: true },
+  { id: 3, name: "MegaRetail Group", logo: "/assets/partner-1.png", industry: "Ritel & E-commerce", featured: true },
+  { id: 4, name: "Indo Manufactur", logo: "/assets/partner-1.png", industry: "Manufaktur", featured: true },
 ];
 
 const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    client: "Bank Nusantara",
-    title: "Transformasi Digital Core Banking",
-    description: "Modernisasi sistem perbankan inti untuk meningkatkan keamanan dan pengalaman nasabah",
+    client: "Techno",
+    title: "Penggunaan Sistem ERP",
+    description: "Modernisasi sistem bISNIS LEBIH MUDAH",
     result: "30% peningkatan efisiensi operasional",
-    image: "/assets/case-study-1.jpg",
+    image: "/assets/product-3.jpg",
     industry: "Perbankan & Keuangan"
   },
   {
     id: 2,
-    client: "MegaRetail Group",
-    title: "Solusi Omnichannel Terintegrasi",
-    description: "Implementasi platform ritel omnichannel untuk pengalaman belanja yang mulus",
+    client: "antlia",
+    title: "System POS",
+    description: "Implementasi SISTEM POS yang berdampak Positif",
     result: "45% peningkatan penjualan online",
-    image: "/assets/case-study-2.jpg",
+    image: "/assets/product-2.jpg",
     industry: "Ritel & E-commerce"
   },
   {
     id: 3,
-    client: "Indo Manufactur",
+    client: "IKN",
     title: "Smart Factory Implementation",
-    description: "Otomatisasi dan digitalisasi proses produksi untuk efisiensi yang lebih tinggi",
+    description: "iMPLEMENTASI TERBAIK",
     result: "25% pengurangan biaya operasional",
-    image: "/assets/case-study-3.jpg",
+    image: "/assets/product-4.jpg",
     industry: "Manufaktur"
   }
 ];
@@ -190,25 +186,25 @@ const ClientsPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Budi Santoso",
+                name: "Elia Fernandoo",
                 position: "CIO",
                 company: "Bank Nusantara",
                 content: "ANTLIA memahami kebutuhan bisnis kami dengan sangat baik dan menghadirkan solusi yang jauh melampaui harapan. Sistem yang mereka kembangkan telah menjadi tulang punggung operasi kami.",
-                image: "/assets/team-3.jpg"
+                image: "/assets/avatar-1.jpg"
               },
               {
-                name: "Linda Wijaya",
-                position: "Head of IT",
-                company: "MegaRetail Group",
-                content: "Kerja sama dengan tim ANTLIA sangat profesional dan efisien. Mereka tidak hanya fokus pada pengembangan teknologi, tetapi juga memahami aspek bisnis yang menjadi dasar kebutuhan kami.",
-                image: "/assets/team-2.jpg"
+                name: "Eva Ria Damanik",
+                position: "CIO",
+                company: "Bank Nusantara",
+                content: "ANTLIA memahami kebutuhan bisnis kami dengan sangat baik dan menghadirkan solusi yang jauh melampaui harapan. Sistem yang mereka kembangkan telah menjadi tulang punggung operasi kami.",
+                image: "/assets/avatar-1.jpg"
               },
               {
-                name: "Hendry Tanuwijaya",
-                position: "COO",
-                company: "Indo Manufactur",
-                content: "Implementasi Smart Factory oleh ANTLIA telah mengubah cara kami beroperasi. Efisiensi meningkat signifikan dan kami memiliki visibilitas yang lebih baik terhadap seluruh proses produksi.",
-                image: "/assets/team-1.jpg"
+                name: "Fernando Girsang",
+                position: "CIO",
+                company: "Bank Nusantara",
+                content: "ANTLIA memahami kebutuhan bisnis kami dengan sangat baik dan menghadirkan solusi yang jauh melampaui harapan. Sistem yang mereka kembangkan telah menjadi tulang punggung operasi kami.",
+                image: "/assets/avatar-1.jpg"
               }
             ].map((testimonial, index) => (
               <Card 

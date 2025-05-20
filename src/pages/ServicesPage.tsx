@@ -20,19 +20,19 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    slug: "pengembangan-aplikasi-kustom",
-    name: "Pengembangan Aplikasi Kustom",
-    shortDescription: "Membangun aplikasi yang disesuaikan dengan kebutuhan spesifik bisnis Anda",
+    slug: "it-consulting",
+    name: "IT Consulting",
+    shortDescription: "Konsultasi IT untuk solusi infrastruktur TI, manajemen sistem, dan implementasi teknologi yang efisien.",
     icon: <Code className="w-6 h-6" />,
     image: "/assets/service-1.jpg",
-    category: "Development",
+    category: "Consulting",
     featured: true
   },
   {
     id: 2,
-    slug: "konsultasi-it",
-    name: "Konsultasi IT",
-    shortDescription: "Pemetaan strategi teknologi untuk mendukung tujuan bisnis Anda",
+    slug: "business-operations-consulting",
+    name: "Business Operations Consulting",
+    shortDescription: "Meningkatkan kinerja bisnis melalui pengembangan proses operasional dan kapasitas organisasi.",
     icon: <Users className="w-6 h-6" />,
     image: "/assets/service-2.jpg",
     category: "Consulting",
@@ -40,45 +40,27 @@ const services: Service[] = [
   },
   {
     id: 3,
-    slug: "cloud-migration",
-    name: "Cloud Migration",
-    shortDescription: "Migrasi sistem ke cloud dengan aman dan efisien untuk skalabilitas yang lebih baik",
-    icon: <Cloud className="w-6 h-6" />,
+    slug: "excel-training-course",
+    name: "Excel Training Course",
+    shortDescription: "Pelatihan Excel untuk meningkatkan keterampilan analisis data dan penyusunan laporan profesional.",
+    icon: <Database className="w-6 h-6" />,
     image: "/assets/service-3.jpg",
-    category: "Cloud",
+    category: "Training",
     featured: true
   },
   {
     id: 4,
-    slug: "keamanan-cyber",
-    name: "Keamanan Cyber",
-    shortDescription: "Lindungi aset digital Anda dengan solusi keamanan siber komprehensif",
+    slug: "workplace-communication-training",
+    name: "Workplace Communication Training",
+    shortDescription: "Pelatihan komunikasi profesional untuk meningkatkan kemampuan persuasif di tempat kerja.",
     icon: <Shield className="w-6 h-6" />,
     image: "/assets/service-4.jpg",
-    category: "Security",
-    featured: false
-  },
-  {
-    id: 5,
-    slug: "pengembangan-web-mobile",
-    name: "Pengembangan Web & Mobile",
-    shortDescription: "Wujudkan kehadiran digital Anda dengan aplikasi web dan mobile yang responsif",
-    icon: <Smartphone className="w-6 h-6" />,
-    image: "/assets/service-5.jpg",
-    category: "Development",
-    featured: false
-  },
-  {
-    id: 6,
-    slug: "analisis-data-bi",
-    name: "Analisis Data & BI",
-    shortDescription: "Ekstrak nilai dari data Anda untuk pengambilan keputusan yang lebih baik",
-    icon: <Database className="w-6 h-6" />,
-    image: "/assets/service-6.jpg",
-    category: "Analytics",
-    featured: false
+    category: "Training",
+    featured: true
   }
 ];
+
+
 
 const ServicesPage = () => {
   useEffect(() => {
@@ -197,7 +179,7 @@ const ServicesPage = () => {
       </section>
       
       {/* Approach */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Methodology</span>
@@ -259,27 +241,29 @@ const ServicesPage = () => {
             ))}
           </div>
         </div>
-      </section>
-      
+      </section> */}
+
       {/* CTA Section */}
-      <section className="py-16 bg-antlia-light">
+      <section className="py-20 bg-gradient-to-r from-antlia-blue/10 to-antlia-cyan/10">
         <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg animate-on-scroll">
-            <div className="p-8 md:p-12 text-white">
-              <div className="max-w-3xl mx-auto text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 relative overflow-hidden animate-on-scroll">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-antlia-blue/10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-antlia-cyan/10 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
                 <h2 className="text-3xl font-bold mb-4">Butuh Solusi Khusus?</h2>
-                <p className="mb-6">
-                  Tim ANTLIA siap membantu Anda dengan solusi yang disesuaikan dengan kebutuhan spesifik bisnis Anda.
-                  Hubungi kami sekarang untuk konsultasi gratis.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Button className="bg-white text-antlia-blue hover:bg-white/90">
+                <p className="text-gray-600 mb-6 max-w-xl">
+                Tim ANTLIA siap membantu Anda dengan solusi yang disesuaikan dengan kebutuhan spesifik bisnis Anda.
+                  Hubungi kami sekarang untuk konsultasi gratis.                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
                     <Link to="/kontak" className="flex items-center">
-                      Konsultasi Gratis
+                      Hubungi Kami <ArrowRight size={16} className="ml-2" />
                     </Link>
                   </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white/10">
-                    <a 
+                  <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
+                  <a 
                       href="https://wa.me/6281573635143" 
                       target="_blank" 
                       rel="noopener noreferrer"
@@ -290,10 +274,19 @@ const ServicesPage = () => {
                   </Button>
                 </div>
               </div>
+              <div className="w-full md:w-1/3">
+                <img 
+                  src="/assets/cta-image.png" 
+                  alt="Digital Transformation" 
+                  className="w-full h-auto rounded-lg shadow-md"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
+      
+      
     </>
   );
 };

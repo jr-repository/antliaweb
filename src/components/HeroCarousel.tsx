@@ -18,17 +18,17 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    title: "Solusi Digital untuk Masa Depan",
-    subtitle: "Digital Transformation",
-    description: "ANTLIA menghadirkan layanan teknologi informasi terdepan untuk membantu bisnis Anda berkembang di era digital.",
+    title: "Optimalkan Rantai Pasok Anda dengan Teknologi Terdepan",
+    subtitle: "Antlia by Techno King",
+    description: "Solusi digital lengkap untuk meningkatkan efisiensi, transparansi, dan keberlanjutan rantai pasok Anda",
     bgImage: "/assets/hero-bg.jpg",
-    buttonText: "Eksplorasi Layanan",
+    buttonText: "Pelajari",
     buttonLink: "/solusi"
   },
   {
     id: 2,
     title: "Teknologi Terkini untuk Bisnis Anda",
-    subtitle: "Innovation & Excellence",
+    subtitle: "Antlia by Techno King",
     description: "Kami menggabungkan teknologi terbaru dengan strategi bisnis untuk menghadirkan solusi yang efektif dan terdepan.",
     bgImage: "/assets/hero-bg-alt.jpg", 
     buttonText: "Layanan Kami",
@@ -37,7 +37,7 @@ const slides: Slide[] = [
   {
     id: 3,
     title: "Partner Tepat untuk Pertumbuhan",
-    subtitle: "Business Growth",
+    subtitle: "Antlia by Techno King",
     description: "Tim ahli ANTLIA siap mendukung transformasi digital bisnis Anda dengan solusi yang komprehensif dan terukur.",
     bgImage: "/assets/about-hero-bg.jpg",
     buttonText: "Tentang Kami",

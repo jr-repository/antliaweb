@@ -23,140 +23,107 @@ interface ServiceDetail {
   deliverables: string[];
   process: Process[];
   benefits: string[];
-  technologies: string[];
-  caseStudies: {
-    title: string;
-    client: string;
-    description: string;
-    result: string;
-    image: string;
-  }[];
-  testimonials: {
-    name: string;
-    position: string;
-    company: string;
-    content: string;
-    avatar?: string;
-  }[];
-  faq: { question: string; answer: string }[];
 }
 
 const services: ServiceDetail[] = [
   {
     id: 1,
-    slug: "pengembangan-aplikasi-kustom",
-    name: "Pengembangan Aplikasi Kustom",
-    description: "Membangun aplikasi yang disesuaikan dengan kebutuhan spesifik bisnis Anda",
-    longDescription: "Layanan pengembangan aplikasi kustom dari ANTLIA membantu bisnis menciptakan solusi perangkat lunak yang sesuai dengan kebutuhan spesifik mereka. Tim ahli kami menggunakan teknologi terkini dan metodologi pengembangan terbaik untuk membangun aplikasi yang skalabel, aman, dan user-friendly untuk berbagai platform termasuk web, mobile, dan desktop.",
+    slug: "it-consulting",
+    name: "IT Consulting",
+    description: "Konsultasi IT memberikan solusi teknologi untuk masalah bisnis yang terkait dengan infrastruktur TI, pengelolaan sistem, dan perencanaan implementasi teknologi yang lebih efisien.",
+    longDescription: "Konsultasi IT memberikan solusi teknologi untuk masalah bisnis yang terkait dengan infrastruktur TI, pengelolaan sistem, dan perencanaan implementasi teknologi yang lebih efisien. Layanan ini membantu perusahaan dalam meningkatkan performa operasional, menjaga keamanan data, serta menyediakan solusi yang disesuaikan dengan kebutuhan spesifik perusahaan Anda.",
     image: "/assets/service-1.jpg",
-    icon: "Code",
-    category: "Development",
+    icon: "Settings",
+    category: "Consulting",
     deliverables: [
-      "Analisis kebutuhan bisnis dan teknis",
-      "Rancangan UI/UX yang intuitif",
-      "Kode sumber aplikasi",
-      "Dokumentasi teknis lengkap",
-      "Dukungan implementasi dan pelatihan",
-      "Maintenance dan update berkala"
+      "Evaluasi Sistem TI: Melakukan audit dan evaluasi terhadap sistem TI yang sudah ada.",
+      "Perencanaan Implementasi: Membantu merencanakan dan melaksanakan implementasi solusi teknologi baru.",
+      "Pengelolaan Infrastruktur: Menyediakan layanan pengelolaan infrastruktur TI seperti server, jaringan, dan perangkat keras.",
+      "Keamanan TI: Menyediakan solusi untuk meningkatkan keamanan data dan perlindungan terhadap ancaman siber.",
+      "Pemeliharaan Sistem: Layanan pemeliharaan dan troubleshooting sistem untuk memastikan ketersediaan dan kinerja yang optimal."
     ],
-    process: [
-      {
-        title: "Requirement Gathering",
-        description: "Mengumpulkan dan menganalisis kebutuhan bisnis untuk menentukan fitur dan fungsionalitas aplikasi."
-      },
-      {
-        title: "Design & Prototyping",
-        description: "Membuat wireframe dan prototipe interaktif untuk visualisasi pengalaman pengguna."
-      },
-      {
-        title: "Development",
-        description: "Mengembangkan aplikasi menggunakan teknologi yang sesuai dengan kebutuhan proyek."
-      },
-      {
-        title: "Quality Assurance",
-        description: "Melakukan pengujian menyeluruh untuk memastikan aplikasi berfungsi dengan benar dan bebas bug."
-      },
-      {
-        title: "Deployment",
-        description: "Meluncurkan aplikasi ke lingkungan produksi dengan minimal gangguan."
-      },
-      {
-        title: "Training & Support",
-        description: "Memberikan pelatihan kepada pengguna dan dukungan berkelanjutan."
-      }
-    ],
+    process: [], // Kosong karena tidak ada tahapan proses yang diberikan
     benefits: [
-      "Solusi yang disesuaikan dengan kebutuhan spesifik bisnis",
-      "Pengalaman pengguna yang dioptimalkan",
-      "Keamanan yang ditingkatkan",
-      "Skalabilitas untuk pertumbuhan masa depan",
-      "Integrasi dengan sistem yang ada",
-      "Keunggulan kompetitif melalui solusi unik"
-    ],
-    technologies: [
-      "JavaScript/TypeScript",
-      "React/Angular/Vue",
-      "Node.js",
-      "PHP/Laravel",
-      "Python/Django",
-      "Java/Spring",
-      ".NET Core",
-      "Swift/Kotlin",
-      "Flutter/React Native",
-      "AWS/Azure/Google Cloud"
-    ],
-    caseStudies: [
-      {
-        title: "Sistem Manajemen Logistik Terintegrasi",
-        client: "PT Logistik Nusantara",
-        description: "Pengembangan sistem manajemen logistik end-to-end untuk mengoptimalkan operasi dan pelacakan pengiriman.",
-        result: "Peningkatan efisiensi operasional sebesar 35% dan pengurangan kesalahan pengiriman hingga 80%.",
-        image: "/assets/case-study-1.jpg"
-      },
-      {
-        title: "Portal B2B untuk Distributor",
-        client: "MegaRetail Group",
-        description: "Portal B2B yang memungkinkan distributor mengelola pesanan, inventaris, dan pembayaran secara real-time.",
-        result: "Peningkatan volume pesanan sebesar 45% dan pengurangan waktu pemrosesan pesanan sebesar 60%.",
-        image: "/assets/case-study-2.jpg"
-      }
-    ],
-    testimonials: [
-      {
-        name: "Budi Santoso",
-        position: "CIO",
-        company: "PT Logistik Nusantara",
-        content: "ANTLIA memahami kebutuhan bisnis kami dengan sangat baik dan menghadirkan solusi yang jauh melampaui harapan. Sistem yang mereka kembangkan telah menjadi tulang punggung operasi kami.",
-        avatar: "/assets/team-3.jpg"
-      },
-      {
-        name: "Linda Wijaya",
-        position: "Head of IT",
-        company: "MegaRetail Group",
-        content: "Kerja sama dengan tim ANTLIA sangat profesional dan efisien. Mereka tidak hanya fokus pada pengembangan teknologi, tetapi juga memahami aspek bisnis yang menjadi dasar kebutuhan kami.",
-        avatar: "/assets/team-2.jpg"
-      }
-    ],
-    faq: [
-      {
-        question: "Berapa lama waktu untuk mengembangkan aplikasi kustom?",
-        answer: "Waktu pengembangan bervariasi tergantung pada kompleksitas dan skala proyek, mulai dari 1-3 bulan untuk aplikasi sederhana hingga 6-12 bulan untuk sistem yang kompleks."
-      },
-      {
-        question: "Apakah ANTLIA menyediakan dukungan setelah peluncuran aplikasi?",
-        answer: "Ya, kami menyediakan paket dukungan dan pemeliharaan pasca-peluncuran untuk memastikan aplikasi Anda berjalan optimal dan tetap diperbarui."
-      },
-      {
-        question: "Bagaimana dengan keamanan aplikasi yang dikembangkan?",
-        answer: "Keamanan adalah prioritas utama kami. Kami mengikuti standar industri terbaik untuk keamanan aplikasi, melakukan pengujian penetrasi, dan menerapkan praktik pengkodean yang aman."
-      },
-      {
-        question: "Apakah aplikasi dapat diintegrasikan dengan sistem yang sudah ada?",
-        answer: "Ya, kami memiliki pengalaman luas dalam mengintegrasikan aplikasi baru dengan sistem yang sudah ada menggunakan API dan middleware."
-      }
+      "Meningkatkan performa dan efisiensi operasional perusahaan.",
+      "Menjamin keamanan data dan sistem TI.",
+      "Menyediakan solusi yang disesuaikan dengan kebutuhan perusahaan."
     ]
   },
-  // Add more service details as needed
+
+  {
+    id: 2,
+    slug: "business-operations-consulting",
+    name: "Business Operations Consulting",
+    description: "Jasa konsultasi operasional untuk peningkatan kinerja bisnis melalui pengembangan tim, optimasi proses, dan implementasi sistem pengendalian yang efektif.",
+    longDescription: "Jasa konsultasi operasional yang kami tawarkan bertujuan untuk memberikan nilai tambah kepada klien melalui pemecahan masalah, peningkatan kinerja, dan pengembangan kapasitas. Kami membantu perusahaan mengoptimalkan proses bisnis, membangun tim yang lebih efisien, serta menerapkan sistem kontrol dan continuous improvement untuk mendukung pertumbuhan berkelanjutan.",
+    image: "/assets/service-2.jpg",
+    icon: "BarChart",
+    category: "Consulting",
+    deliverables: [
+      "Layanan Pengembangan Tim dan Manajerial: Pengelolaan konflik, pembuatan laporan, delegasi tugas yang efektif, dan manajemen kinerja, dilengkapi pelatihan bersertifikat.",
+      "Bisnis Proses dan Analisis Operasional: Evaluasi operasional, perbaikan proses tidak efisien, desain sistem pengendalian, analisis cost untuk menekan biaya dan meningkatkan margin keuntungan.",
+      "Pengembangan Supply Chain dan Continuous Improvement: Demand planning, procurement, sourcing, logistik, serta penerapan perbaikan berkelanjutan di seluruh bagian perusahaan.",
+      "Proyek Konsultasi & Pelatihan Berkelanjutan: Mencakup area kritikal seperti manajemen SDM, pemasaran, dan teknologi untuk mencapai tujuan operasional secara efektif dan efisien."
+    ],
+    process: [], // Kosong karena tidak ada tahapan proses yang diberikan
+    benefits: [
+      "Peningkatan kinerja operasional secara signifikan",
+      "Pengembangan kapasitas tim dan manajerial yang lebih profesional",
+      "Efisiensi biaya operasional dan peningkatan profitabilitas",
+      "Penerapan sistem kontrol dan perbaikan berkelanjutan",
+      "Dukungan strategis untuk pencapaian tujuan jangka panjang perusahaan"
+    ]
+  },
+
+  {
+    id: 3,
+    slug: "excel-training-course",
+    name: "Excel Training Course",
+    description: "Pelatihan Microsoft Excel untuk meningkatkan keterampilan analisis data dan penyusunan laporan profesional di berbagai bidang bisnis.",
+    longDescription: "Pelatihan Excel ini dirancang untuk meningkatkan keterampilan penggunaan Microsoft Excel untuk berbagai industri, seperti keuangan, supply chain, pemasaran, dan manajemen. Setiap modul pelatihan dilengkapi dengan latihan praktis dan studi kasus nyata, memungkinkan peserta untuk memahami penerapan Excel di dunia kerja secara langsung. Pelatihan ini memberikan pemahaman tentang cara menggunakan Excel untuk menyelesaikan tugas analitis dan menghasilkan laporan yang profesional.",
+    image: "/assets/service-3.jpg",
+    icon: "FileSpreadsheet",
+    category: "Training",
+    deliverables: [
+      "Modul pelatihan lengkap untuk setiap tingkatan (Beginner, Intermediate, Advanced)",
+      "Latihan praktis dan studi kasus nyata",
+      "Sertifikat resmi setelah menyelesaikan pelatihan",
+      "Akses ke materi digital dan panduan referensi Excel"
+    ],
+    process: [], // Kosong karena tidak ada tahapan proses yang diberikan
+    benefits: [
+      "Meningkatkan produktivitas kerja melalui penguasaan Excel",
+      "Kemampuan analisis data yang lebih baik dan akurat",
+      "Pembuatan laporan yang profesional dan mudah dipahami",
+      "Kesiapan untuk pekerjaan di berbagai industri yang membutuhkan Excel",
+      "Peningkatan kompetensi individu dan tim"
+    ]
+  },
+
+  {
+    id: 4,
+    slug: "workplace-communication-training",
+    name: "Workplace Communication Training Course",
+    description: "Pelatihan komunikasi profesional untuk meningkatkan kemampuan komunikasi persuasif di tempat kerja pada berbagai situasi dan level jabatan.",
+    longDescription: "Pelatihan ini bertujuan untuk meningkatkan pengetahuan, pemahaman, dan keterampilan dalam komunikasi persuasif, yang dapat diterapkan dalam berbagai situasi profesional. Dengan pelatihan ini, peserta dapat menganalisis masalah komunikasi yang dihadapi dan mencari solusi efektif untuk meningkatkan hubungan kerja serta membangun kepercayaan dan kredibilitas di tempat kerja. Pelatihan menggunakan media online dan perangkat interaktif untuk memfasilitasi pemahaman yang lebih baik tentang teknik-teknik yang diajarkan. Peserta akan mendapatkan sertifikat resmi. Pelatihan ini diajarkan oleh pengajar yang berpengalaman, termasuk Meike Lusye Karolus, S.Sos., M.A. dan Angela Frenzia Betyarini, S.S., M.A., yang memiliki latar belakang akademis dan profesional yang kuat di bidang komunikasi dan media.",
+    image: "/assets/service-4.jpg",
+    icon: "MessageSquare",
+    category: "Training",
+    deliverables: [
+      "Pelatihan komunikasi persuasif untuk berbagai tingkatan (Beginner, Intermediate, Advanced)",
+      "Materi interaktif dan simulasi situasi nyata di tempat kerja",
+      "Sertifikat resmi dari instruktur berpengalaman",
+      "Akses ke modul digital dan bahan pendukung pembelajaran"
+    ],
+    process: [], // Kosong karena tidak ada tahapan proses yang diberikan
+    benefits: [
+      "Peningkatan keterampilan komunikasi profesional dan persuasif",
+      "Pemahaman tentang etika dan citra diri dalam komunikasi",
+      "Kemampuan mengelola konflik dan membangun relasi kerja yang positif",
+      "Peningkatan kepercayaan diri saat berbicara di depan umum atau presentasi",
+      "Peningkatan reputasi dan kredibilitas di lingkungan kerja"
+    ]
+  }
 ];
 
 const ServiceDetailPage = () => {
@@ -319,166 +286,46 @@ const ServiceDetailPage = () => {
         </div>
       </section>
       
-      {/* Technologies */}
-      <section className="py-16 bg-antlia-light">
+    
+         {/* CTA Section */}
+         <section className="py-20 bg-gradient-to-r from-antlia-blue/10 to-antlia-cyan/10">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-on-scroll">
-            <span className="subtitle block mb-2">Our Stack</span>
-            <h2 className="text-3xl font-bold mb-4">Teknologi yang Kami Gunakan</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Kami menggunakan teknologi terkini untuk mengembangkan solusi yang skalabel dan berperforma tinggi
-            </p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {service.technologies.map((tech, index) => (
-              <span 
-                key={index} 
-                className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium animate-on-scroll"
-                style={{animationDelay: `${index * 50}ms`}}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Case Studies */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-on-scroll">
-            <span className="subtitle block mb-2">Success Stories</span>
-            <h2 className="text-3xl font-bold mb-4">Studi Kasus</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Lihat bagaimana kami telah membantu klien kami mencapai tujuan mereka
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {service.caseStudies.map((caseStudy, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-on-scroll" style={{animationDelay: `${index * 200}ms`}}>
-                <div className="h-56 overflow-hidden">
-                  <img 
-                    src={caseStudy.image} 
-                    alt={caseStudy.title} 
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="text-sm font-medium text-antlia-blue mb-2">{caseStudy.client}</div>
-                  <h3 className="text-xl font-semibold mb-3">{caseStudy.title}</h3>
-                  <p className="text-gray-600 mb-4">{caseStudy.description}</p>
-                  <div className="flex items-center border-t border-gray-100 pt-4 mt-4">
-                    <div className="text-sm font-medium">Hasil:</div>
-                    <div className="ml-2 text-sm text-antlia-blue font-medium">{caseStudy.result}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials */}
-      <section className="py-16 bg-antlia-light">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-on-scroll">
-            <span className="subtitle block mb-2">Client Feedback</span>
-            <h2 className="text-3xl font-bold mb-4">Apa Kata Klien Kami</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Pengalaman klien yang telah menggunakan layanan {service.name} dari ANTLIA
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {service.testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 animate-on-scroll" style={{animationDelay: `${index * 200}ms`}}>
-                <CardContent className="p-6">
-                  <div className="flex items-start mb-4">
-                    {testimonial.avatar ? (
-                      <div className="w-14 h-14 rounded-full overflow-hidden mr-4">
-                        <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-cover" />
-                      </div>
-                    ) : (
-                      <div className="w-14 h-14 rounded-full bg-antlia-blue/10 flex items-center justify-center mr-4 text-antlia-blue font-bold">
-                        {testimonial.name.charAt(0)}
-                      </div>
-                    )}
-                    <div>
-                      <h4 className="text-lg font-semibold">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.position}, {testimonial.company}</p>
-                    </div>
-                  </div>
-                  <div className="relative">
-                    <div className="absolute -top-3 -left-2 text-4xl text-antlia-blue/20">"</div>
-                    <p className="relative text-gray-700 italic">{testimonial.content}</p>
-                    <div className="absolute -bottom-3 -right-2 text-4xl text-antlia-blue/20">"</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* FAQ */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-on-scroll">
-            <span className="subtitle block mb-2">Questions & Answers</span>
-            <h2 className="text-3xl font-bold mb-4">Pertanyaan Umum</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Jawaban untuk pertanyaan yang sering diajukan tentang {service.name}
-            </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto">
-            {service.faq.map((item, index) => (
-              <Card key={index} className="mb-4 animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{item.question}</h3>
-                  <p className="text-gray-600">{item.answer}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-16 bg-antlia-light">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg animate-on-scroll">
-            <div className="p-8 md:p-12 text-white">
-              <div className="max-w-3xl mx-auto text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 relative overflow-hidden animate-on-scroll">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-antlia-blue/10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-antlia-cyan/10 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
                 <h2 className="text-3xl font-bold mb-4">Siap untuk Mendiskusikan Proyek Anda?</h2>
-                <p className="mb-6">
-                  Tim ANTLIA siap membantu Anda dengan solusi {service.name} yang disesuaikan dengan kebutuhan bisnis Anda.
-                  Hubungi kami sekarang untuk konsultasi awal.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Button className="bg-white text-antlia-blue hover:bg-white/90">
-                    <Link to="/kontak" className="flex items-center">
-                      Diskusikan Proyek Anda
-                    </Link>
-                  </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white/10">
-                    <a 
+                <p className="text-gray-600 mb-6 max-w-xl">
+                Tim ANTLIA siap membantu Anda dengan solusi IT Consulting yang disesuaikan dengan kebutuhan bisnis Anda. Hubungi kami sekarang untuk konsultasi awal.                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                 
+                  <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
+                  <a 
                       href="https://wa.me/6281573635143" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center"
                     >
-                      Hubungi via WhatsApp
+                      Diskusikan Proyek Anda
                     </a>
                   </Button>
                 </div>
+              </div>
+              <div className="w-full md:w-1/3">
+                <img 
+                  src="/assets/cta-image.png" 
+                  alt="Digital Transformation" 
+                  className="w-full h-auto rounded-lg shadow-md"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      
     </>
   );
 };

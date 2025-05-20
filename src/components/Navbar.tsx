@@ -37,9 +37,11 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Produk & Layanan", path: "/produk-layanan" },
     { name: "Tentang Kami", path: "/tentang-kami" },
-    { name: "Solusi", path: "/solusi" },
+    // { name: "Solusi", path: "/solusi" },
     { name: "Klien", path: "/klien" },
     { name: "Artikel", path: "/artikel" },
+    { name: "Kontak", path: "/kontak" },
+
   ];
 
   // Check if the current route is active
@@ -62,7 +64,7 @@ const Navbar = () => {
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-antlia-blue to-antlia-cyan bg-clip-text text-transparent">
                   ANTLIA
                 </h1>
-                <p className="text-xs text-gray-500 -mt-1">Teknologi untuk Masa Depan</p>
+                <p className="text-xs text-gray-500 -mt-1">Inclusive by Design, Powerful by Nature</p>
               </div>
             </div>
           </Link>

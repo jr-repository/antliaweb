@@ -111,7 +111,7 @@ const HomePage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FeatureCard 
-              title="Keahlian Teknis" 
+              title="Teknologi canggih berbasis AI dan IoT" 
               description="Tim ahli kami memiliki pengalaman luas dalam berbagai teknologi terkini"
               icon="CheckCircle"
               delay={100}
@@ -149,18 +149,18 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "ANTLIA CRM",
-                description: "Sistem manajemen pelanggan komprehensif dengan fitur otomatisasi dan analitik",
+                title: "ANTLIA POS (Point of Sale)",
+                description: "sistem kasir digital yang memudahkan transaksi jual beli, baik secara langsung di toko maupun secara online",
                 image: "/assets/product-1.jpg"
               },
               {
                 title: "ANTLIA ERP",
-                description: "Solusi Enterprise Resource Planning terintegrasi untuk efisiensi operasional bisnis",
+                description: " sistem yang dirancang untuk membantu perusahaan dalam mengelola dan mengintegrasikan berbagai proses bisnis secara efisien",
                 image: "/assets/product-2.jpg"
               },
               {
-                title: "ANTLIA Analytics",
-                description: "Platform analitik data untuk mengubah data mentah menjadi wawasan bisnis yang berharga",
+                title: "ANTLIA WMS",
+                description: "sistem manajemen gudang yang dirancang untuk meningkatkan efisiensi operasional gudang",
                 image: "/assets/product-3.jpg"
               }
             ].map((product, index) => (
@@ -203,12 +203,12 @@ const HomePage = () => {
       </section>
       
       {/* Team Section */}
-      <TeamSection 
+      {/* <TeamSection 
         title="Tim Ahli Kami" 
         subtitle="Meet Our Experts"
         description="Didukung oleh profesional berpengalaman yang berdedikasi untuk memberikan yang terbaik"
         members={teamMembers}
-      />
+      /> */}
       
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-antlia-blue/10 to-antlia-cyan/10">
@@ -275,71 +275,23 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="hover:shadow-lg transition-shadow duration-300 animate-on-scroll">
               <CardHeader>
-                <CardTitle>Transformasi Digital di Indonesia</CardTitle>
-                <CardDescription>12 Mei 2023</CardDescription>
+                <CardTitle>Kenalan dengan ANTLIA: Solusi Cerdas untuk Efisiensi Bisnis di Era Digital 5.0</CardTitle>
+                <CardDescription>20 Mei 2025</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="h-48 overflow-hidden rounded-md mb-4">
                   <img 
-                    src="/assets/blog-1.jpg" 
+                    src="/assets/artikel1.png" 
                     alt="Transformasi Digital" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <p className="text-gray-600">
-                  Bagaimana perusahaan Indonesia mengadopsi transformasi digital untuk tetap kompetitif di era modern.
+                ANTLIA hadir sebagai wajah baru dari Techno King Indonesia, membawa semangat efisiensi dan inovasi bisnis melalui sistem POS, WMS, dan
                 </p>
               </CardContent>
               <CardFooter>
-                <Link to="/artikel/memahami-transformasi-digital-di-indonesia" className="text-antlia-blue hover:underline flex items-center">
-                  Baca selengkapnya <ChevronRight className="ml-1 w-4 h-4" />
-                </Link>
-              </CardFooter>
-            </Card>
-            
-            <Card className="hover:shadow-lg transition-shadow duration-300 animate-on-scroll" style={{animationDelay: '100ms'}}>
-              <CardHeader>
-                <CardTitle>Keamanan Siber dalam Bisnis</CardTitle>
-                <CardDescription>25 Juni 2023</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-48 overflow-hidden rounded-md mb-4">
-                  <img 
-                    src="/assets/blog-2.jpg" 
-                    alt="Keamanan Siber" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-gray-600">
-                  Mengapa keamanan siber harus menjadi prioritas utama bagi setiap bisnis di era digital.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Link to="/artikel/keamanan-siber-tantangan-era-digital" className="text-antlia-blue hover:underline flex items-center">
-                  Baca selengkapnya <ChevronRight className="ml-1 w-4 h-4" />
-                </Link>
-              </CardFooter>
-            </Card>
-            
-            <Card className="hover:shadow-lg transition-shadow duration-300 animate-on-scroll" style={{animationDelay: '200ms'}}>
-              <CardHeader>
-                <CardTitle>Cloud Computing untuk UKM</CardTitle>
-                <CardDescription>8 Juli 2023</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-48 overflow-hidden rounded-md mb-4">
-                  <img 
-                    src="/assets/blog-3.jpg" 
-                    alt="Cloud Computing" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-gray-600">
-                  Manfaat dan panduan implementasi cloud computing untuk Usaha Kecil dan Menengah di Indonesia.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Link to="/artikel" className="text-antlia-blue hover:underline flex items-center">
+                <Link to="/artikel/kenalan-dengan-antlia-solusi-cerdas-untuk-efisiensi-bisnis-di-era-digital-50" className="text-antlia-blue hover:underline flex items-center">
                   Baca selengkapnya <ChevronRight className="ml-1 w-4 h-4" />
                 </Link>
               </CardFooter>

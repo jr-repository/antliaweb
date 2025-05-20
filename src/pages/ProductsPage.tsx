@@ -13,7 +13,7 @@ interface Product {
   shortDescription: string;
   image: string;
   category: string;
-  rating: number;
+ 
   featured: boolean;
 }
 
@@ -25,81 +25,69 @@ const products: Product[] = [
     shortDescription: "Sistem manajemen pelanggan komprehensif dengan fitur otomatisasi dan analitik",
     image: "/assets/product-1.jpg",
     category: "Software",
-    rating: 4.8,
     featured: true
   },
   {
     id: 2,
-    slug: "antlia-erp",
-    name: "ANTLIA ERP",
-    shortDescription: "Solusi Enterprise Resource Planning terintegrasi untuk efisiensi operasional bisnis",
+    slug: "antlia-pos",
+    name: "ANTLIA POS",
+    shortDescription: "Sistem kasir digital yang memudahkan transaksi jual beli secara langsung maupun online.",
     image: "/assets/product-2.jpg",
-    category: "Software",
-    rating: 4.7,
+    category: "Software + Hardware",
+ 
     featured: true
   },
   {
     id: 3,
-    slug: "antlia-analytics",
-    name: "ANTLIA Analytics",
-    shortDescription: "Platform analitik data untuk mengubah data mentah menjadi wawasan bisnis yang berharga",
+    slug: "antlia-erp",
+    name: "ANTLIA ERP",
+    shortDescription: "Sistem Enterprise Resource Planning untuk mengintegrasikan dan mengotomatisasi proses bisnis perusahaan.",
     image: "/assets/product-3.jpg",
     category: "Software",
-    rating: 4.9,
+
     featured: true
   },
   {
     id: 4,
-    slug: "antlia-inventory",
-    name: "ANTLIA Inventory",
-    shortDescription: "Sistem manajemen inventaris canggih dengan pelacakan real-time dan notifikasi otomatis",
+    slug: "antlia-wms",
+    name: "ANTLIA WMS",
+    shortDescription: "Sistem manajemen gudang untuk meningkatkan efisiensi operasional dengan integrasi teknologi barcode/RFID.",
     image: "/assets/product-4.jpg",
     category: "Software",
-    rating: 4.6,
-    featured: false
+  
+    featured: true
   },
   {
     id: 5,
-    slug: "antlia-pos",
-    name: "ANTLIA POS",
-    shortDescription: "Sistem point of sale modern dengan integrasi e-commerce dan laporan penjualan komprehensif",
+    slug: "antlia-tms",
+    name: "ANTLIA TMS",
+    shortDescription: "Sistem manajemen transportasi untuk optimasi logistik, pengurangan biaya, dan peningkatan kepuasan pelanggan.",
     image: "/assets/product-5.jpg",
     category: "Software",
-    rating: 4.5,
-    featured: false
+ 
+    featured: true
   },
   {
     id: 6,
-    slug: "antlia-hrms",
-    name: "ANTLIA HRMS",
-    shortDescription: "Solusi manajemen SDM lengkap dengan fitur rekrutmen, payroll, dan pengembangan karyawan",
+    slug: "antlia-iot",
+    name: "ANTLIA IoT",
+    shortDescription: "Solusi Internet of Things untuk pemantauan real-time aset dan proses bisnis melalui dashboard cloud.",
     image: "/assets/product-6.jpg",
-    category: "Software",
-    rating: 4.7,
-    featured: false
+    category: "Software + Hardware",
+  
+    featured: true
   },
   {
     id: 7,
-    slug: "antlia-project",
-    name: "ANTLIA Project",
-    shortDescription: "Alat manajemen proyek kolaboratif dengan Gantt chart, pelacakan tugas, dan banyak lagi",
+    slug: "antlia-hrm",
+    name: "ANTLIA HRM",
+    shortDescription: "Sistem manajemen sumber daya manusia untuk otomatisasi rekrutmen, penggajian, pelatihan, dan kinerja karyawan.",
     image: "/assets/product-7.jpg",
     category: "Software",
-    rating: 4.8,
-    featured: false
-  },
-  {
-    id: 8,
-    slug: "antlia-elearning",
-    name: "ANTLIA eLearning",
-    shortDescription: "Platform pembelajaran digital untuk pelatihan karyawan dan pengembangan keterampilan",
-    image: "/assets/product-8.jpg",
-    category: "Software",
-    rating: 4.6,
-    featured: false
+ 
+    featured: true
   }
 ];
-
 const ProductsPage = () => {
   useEffect(() => {
     // Animate elements on scroll
@@ -137,8 +125,8 @@ const ProductsPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <span className="subtitle block mb-2">Featured Products</span>
-            <h2 className="text-3xl font-bold mb-4">Produk Paling Diminati</h2>
+            <span className="subtitle block mb-2">antlia Produk</span>
+            <h2 className="text-3xl font-bold mb-4">Semua Produk Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Produk-produk unggulan kami yang telah terbukti memberikan nilai tambah signifikan bagi bisnis
             </p>
@@ -160,13 +148,8 @@ const ProductsPage = () => {
                     <div className="product-overlay">
                       <h3 className="text-xl font-bold mb-2">{product.name}</h3>
                       <div className="flex items-center justify-center mb-4">
-                        {Array.from({ length: 5 }).map((_, index) => (
-                          <Star 
-                            key={index} 
-                            className={`w-4 h-4 ${index < Math.floor(product.rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-400'}`}
-                          />
-                        ))}
-                        <span className="ml-2 text-sm">{product.rating}</span>
+                     
+                      
                       </div>
                       <Link to={`/produk/${product.slug}`}>
                         <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
@@ -192,7 +175,7 @@ const ProductsPage = () => {
         </div>
       </section>
       
-      {/* All Products */}
+      {/* All Products
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
@@ -250,36 +233,48 @@ const ProductsPage = () => {
             ))}
           </div>
         </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-16 bg-white">
+      </section> */}
+
+         {/* CTA Section */}
+         <section className="py-20 bg-gradient-to-r from-antlia-blue/10 to-antlia-cyan/10">
         <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg animate-on-scroll">
-            <div className="p-8 md:p-12 text-white">
-              <div className="max-w-3xl mx-auto text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 relative overflow-hidden animate-on-scroll">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-antlia-blue/10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-antlia-cyan/10 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
                 <h2 className="text-3xl font-bold mb-4">Tidak Menemukan Produk yang Anda Cari?</h2>
-                <p className="mb-6">
-                  ANTLIA juga menyediakan solusi kustom yang dirancang khusus untuk memenuhi kebutuhan spesifik bisnis Anda.
-                  Tim pengembangan kami siap bekerja sama dengan Anda untuk menciptakan solusi yang tepat.
+                <p className="text-gray-600 mb-6 max-w-xl">
+                ANTLIA juga menyediakan solusi kustom yang dirancang khusus untuk memenuhi kebutuhan spesifik bisnis Anda. Tim pengembangan kami siap bekerja sama dengan Anda untuk menciptakan solusi yang tepat.
                 </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Button className="bg-white text-antlia-blue hover:bg-white/90">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
+                    <Link to="/kontak" className="flex items-center">
+                      Hubungi Kami <ArrowRight size={16} className="ml-2" />
+                    </Link>
+                  </Button>
+
+                  <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
                     <Link to="/layanan" className="flex items-center">
                       Lihat Layanan Kustom
                     </Link>
                   </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white/10">
-                    <Link to="/kontak" className="flex items-center">
-                      Hubungi Kami
-                    </Link>
-                  </Button>
+        
                 </div>
+              </div>
+              <div className="w-full md:w-1/3">
+                <img 
+                  src="/assets/cta-image.png" 
+                  alt="Digital Transformation" 
+                  className="w-full h-auto rounded-lg shadow-md"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
+      
     </>
   );
 };

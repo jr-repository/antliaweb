@@ -25,12 +25,11 @@ interface ProductDetail {
   image: string;
   gallery: string[];
   category: string;
-  rating: number;
+
   features: Feature[];
   benefits: Benefit[];
   useCases: string[];
   specs: Record<string, string>;
-  faq: { question: string; answer: string }[];
 }
 
 const products: ProductDetail[] = [
@@ -41,9 +40,8 @@ const products: ProductDetail[] = [
     description: "Sistem manajemen pelanggan komprehensif dengan fitur otomatisasi dan analitik",
     longDescription: "ANTLIA CRM adalah platform manajemen hubungan pelanggan yang dirancang untuk membantu bisnis dari segala ukuran mengelola interaksi dengan pelanggan secara lebih efektif. Dengan fitur otomatisasi pemasaran, manajemen penjualan, dan dukungan pelanggan yang terintegrasi, ANTLIA CRM memungkinkan bisnis untuk meningkatkan retensi pelanggan, mengoptimalkan proses penjualan, dan mendorong pertumbuhan bisnis.",
     image: "/assets/product-1.jpg",
-    gallery: ["/assets/product-1-gallery-1.jpg", "/assets/product-1-gallery-2.jpg", "/assets/product-1-gallery-3.jpg"],
+    gallery: [],
     category: "Software",
-    rating: 4.8,
     features: [
       {
         title: "Manajemen Kontak",
@@ -102,25 +100,433 @@ const products: ProductDetail[] = [
       "Keamanan": "Enkripsi End-to-end, 2FA",
       "Penyimpanan": "Tidak Terbatas"
     },
-    faq: [
-      {
-        question: "Berapa lama waktu yang dibutuhkan untuk mengimplementasikan ANTLIA CRM?",
-        answer: "Implementasi standar memakan waktu 2-4 minggu, tergantung pada kompleksitas integrasi dan kebutuhan kustomisasi."
-      },
-      {
-        question: "Apakah ANTLIA CRM dapat diintegrasikan dengan sistem yang sudah ada?",
-        answer: "Ya, ANTLIA CRM memiliki API yang komprehensif dan mendukung berbagai integrasi pihak ketiga untuk terhubung dengan sistem yang ada."
-      },
-      {
-        question: "Apakah ada pelatihan yang disediakan untuk pengguna?",
-        answer: "Ya, kami menyediakan pelatihan onboarding komprehensif, dokumentasi, dan dukungan berkelanjutan untuk semua pengguna."
-      },
-      {
-        question: "Bagaimana dengan keamanan data di ANTLIA CRM?",
-        answer: "Keamanan adalah prioritas utama kami. ANTLIA CRM menggunakan enkripsi end-to-end, verifikasi dua faktor, dan regular security audits untuk melindungi data Anda."
-      }
-    ]
   },
+
+  {
+    id: 2,
+    slug: "antlia-pos",
+    name: "ANTLIA POS",
+    description: "Sistem kasir digital yang memudahkan transaksi jual beli secara langsung maupun online.",
+    longDescription: "ANTLIA POS adalah sistem point of sale (POS) berbasis cloud yang dirancang khusus untuk mendukung UMKM di Indonesia. Cocok digunakan di berbagai bidang usaha seperti kuliner, ritel, laundry, barbershop, hingga layanan jasa lainnya. Dengan biaya langganan mulai dari Rp150.000 per bulan dan antarmuka yang ramah pengguna, ANTLIA POS membantu pelaku usaha mengelola transaksi, stok, dan laporan bisnis dengan mudah dan efisien.",
+    image: "/assets/product-2.jpg",
+    gallery: [],
+    category: "Software + Hardware",
+    features: [
+      {
+        title: "Transaksi Otomatis & Real-Time",
+        description: "Penjualan tercatat secara otomatis tanpa risiko kehilangan data atau kesalahan hitungan."
+      },
+      {
+        title: "Akses Mudah via HP atau Tablet",
+        description: "Gunakan smartphone Android atau tablet sebagai mesin kasir tanpa investasi perangkat mahal."
+      },
+      {
+        title: "Laporan Penjualan Instan",
+        description: "Lihat omset harian, barang terlaris, jam sibuk, dan performa karyawan hanya dalam beberapa klik."
+      },
+      {
+        title: "Manajemen Stok Cerdas",
+        description: "Stok akan berkurang secara otomatis setelah transaksi dan memberikan notifikasi saat stok menipis."
+      },
+      {
+        title: "Dukungan Berbagai Pembayaran",
+        description: "Terima pembayaran tunai, QRIS, e-wallet, serta kartu debit/kredit yang langsung tercatat."
+      },
+      {
+        title: "Manajemen Karyawan & Akses Terbatas",
+        description: "Setiap kasir memiliki akun login sendiri untuk menjaga keamanan dan transparansi data transaksi."
+      }
+    ],
+    benefits: [
+      {
+        title: "Efisiensi Biaya Operasional",
+        description: "Biaya langganan dan implementasi terjangkau, cocok untuk UMKM dengan anggaran terbatas."
+      },
+      {
+        title: "Kemudahan Penggunaan",
+        description: "Antarmuka user-friendly yang mudah dipakai bahkan oleh pemula yang baru go digital."
+      },
+      {
+        title: "Pengelolaan Bisnis Lebih Akurat",
+        description: "Data transaksi dan inventaris selalu tersedia real-time, meminimalkan kesalahan manual."
+      },
+      {
+        title: "Fleksibilitas Akses",
+        description: "Monitor bisnis dari mana saja melalui dashboard berbasis cloud kapan pun Anda butuhkan."
+      }
+    ],
+    useCases: [
+      "Warung makan dan kedai kopi yang ingin meningkatkan kecepatan layanan",
+      "Toko retail yang membutuhkan manajemen stok otomatis",
+      "Usaha laundry atau barbershop yang ingin mengelola transaksi lebih cepat",
+      "UMKM jasa yang ingin mengadopsi teknologi digital dalam operasional"
+    ],
+    specs: {
+      "Deployment": "Cloud",
+      "Bahasa Antarmuka": "Bahasa Indonesia, English",
+      "Platform": "Web, Android",
+      "Integrasi": "API, Printer Thermal, Barcode Scanner",
+      "Keamanan": "Login Multi-Level, Enkripsi Data",
+      "Penyimpanan": "Tidak Terbatas (berbasis langganan)"
+    },
+  },
+
+  {
+    id: 3,
+    slug: "antlia-erp",
+    name: "ANTLIA ERP",
+    description: "Sistem Enterprise Resource Planning untuk mengintegrasikan dan mengotomatisasi berbagai proses bisnis perusahaan.",
+    longDescription: "ANTLIA ERP adalah solusi teknologi yang membantu perusahaan mengelola dan mengintegrasikan berbagai proses bisnis secara efisien. Dengan kemampuan otomatisasi dan integrasi data antar departemen seperti keuangan, sumber daya manusia, produksi, dan distribusi, ANTLIA ERP memudahkan pengambilan keputusan serta meningkatkan produktivitas dan efisiensi operasional. Cocok untuk perusahaan dari berbagai ukuran yang ingin tumbuh secara skalabel dan profesional.",
+    image: "/assets/product-3.jpg",
+    gallery: [],
+    category: "Software",
+    features: [
+      {
+        title: "Manajemen Keuangan",
+        description: "Fitur akuntansi umum, pengelolaan anggaran, dan pelaporan keuangan yang terintegrasi."
+      },
+      {
+        title: "Manajemen Sumber Daya Manusia",
+        description: "Kelola data karyawan, sistem penggajian, rekrutmen, hingga program pelatihan secara terpadu."
+      },
+      {
+        title: "Manajemen Rantai Pasok",
+        description: "Pantau inventaris, proses pengadaan, dan distribusi barang secara real-time dan terkoordinasi."
+      },
+      {
+        title: "Manufaktur & Produksi",
+        description: "Atur jadwal produksi, kendali kualitas, dan pemeliharaan peralatan secara efisien."
+      },
+      {
+        title: "Customer Relationship Management (CRM)",
+        description: "Integrasikan interaksi pelanggan, penjualan, dan layanan purna jual dalam satu platform."
+      },
+      {
+        title: "Business Intelligence",
+        description: "Akses dashboard dan laporan analitik mendalam untuk memantau dan mengevaluasi kinerja bisnis."
+      },
+      {
+        title: "Kustomisasi & Pelatihan",
+        description: "Solusi yang dapat disesuaikan dengan kebutuhan bisnis Anda, dilengkapi dukungan implementasi dan pelatihan."
+      }
+    ],
+    benefits: [
+      {
+        title: "Integrasi Data Terpusat",
+        description: "Hapus duplikasi data dan tingkatkan konsistensi informasi di seluruh departemen perusahaan."
+      },
+      {
+        title: "Otomatisasi Proses Bisnis",
+        description: "Kurangi pekerjaan manual dan minimalkan kesalahan dengan otomatisasi yang cepat dan akurat."
+      },
+      {
+        title: "Pengambilan Keputusan Berbasis Data",
+        description: "Dukungan laporan real-time dan analisis mendalam untuk pengambilan keputusan strategis."
+      },
+      {
+        title: "Skalabilitas Tinggi",
+        description: "Sistem yang mudah dikembangkan seiring pertumbuhan dan perubahan kebutuhan bisnis Anda."
+      },
+      {
+        title: "Keamanan Data Perusahaan",
+        description: "Perlindungan menyeluruh terhadap akses tidak sah dan ancaman keamanan lainnya."
+      }
+    ],
+    useCases: [
+      "Perusahaan manufaktur yang ingin mengintegrasikan alur kerja produksi dan logistik",
+      "Bisnis ritel besar yang membutuhkan sinkronisasi antara gudang, toko, dan keuangan",
+      "Perusahaan jasa yang ingin mengelola SDM, keuangan, dan CRM dalam satu sistem",
+      "Startup atau UKM yang siap beralih ke sistem enterprise untuk pertumbuhan berkelanjutan"
+    ],
+    specs: {
+      "Deployment": "Cloud / On-premise",
+      "Bahasa Antarmuka": "Bahasa Indonesia, English",
+      "Platform": "Web",
+      "Integrasi": "API, Integrasi Internal Antar Modul, Webhooks",
+      "Keamanan": "Role-Based Access Control, Enkripsi End-to-End, Backup Otomatis",
+      "Penyimpanan": "Tidak Terbatas (berdasarkan paket langganan)"
+    },
+  },
+
+  {
+    id: 4,
+    slug: "antlia-wms",
+    name: "ANTLIA WMS",
+    description: "Sistem manajemen gudang untuk meningkatkan efisiensi operasional dengan integrasi teknologi barcode/RFID.",
+    longDescription: "ANTLIA WMS adalah sistem manajemen gudang berbasis teknologi terkini yang membantu perusahaan mengelola proses penerimaan, penyimpanan, pengambilan, hingga pengiriman barang secara otomatis dan real-time. Dengan dukungan teknologi barcode dan RFID, antarmuka intuitif, serta kemampuan skalabilitas tinggi, ANTLIA WMS memastikan pengelolaan inventaris lebih akurat, cepat, dan efisien untuk bisnis dari segala ukuran.",
+    image: "/assets/product-4.jpg",
+    gallery: [],
+    category: "Software",
+    features: [
+      {
+        title: "Manajemen Penerimaan Barang (Receiving)",
+        description: "Pencatatan dan pelacakan barang masuk secara akurat dan efisien."
+      },
+      {
+        title: "Penempatan Barang (Putaway)",
+        description: "Mengoptimalkan lokasi penyimpanan barang di gudang untuk aksesibilitas maksimal."
+      },
+      {
+        title: "Pengambilan Barang (Picking)",
+        description: "Dukungan metode FIFO dan lainnya untuk memastikan pengambilan barang yang tepat."
+      },
+      {
+        title: "Pengemasan & Pengiriman (Packing & Shipping)",
+        description: "Memastikan keakuratan proses pengemasan dan waktu pengiriman yang optimal."
+      },
+      {
+        title: "Pelacakan Inventaris Real-Time",
+        description: "Visibilitas stok secara real-time untuk pengelolaan inventaris yang lebih baik."
+      }
+    ],
+    benefits: [
+      {
+        title: "Efisiensi Operasional Gudang",
+        description: "Otomatisasi tugas manual mengurangi waktu dan tenaga kerja yang diperlukan."
+      },
+      {
+        title: "Pengurangan Kesalahan Human Error",
+        description: "Teknologi pelacakan otomatis mengurangi risiko kesalahan dalam pengambilan dan pengiriman."
+      },
+      {
+        title: "Antarmuka Ramah Pengguna",
+        description: "Kemudahan pengoperasian tanpa pelatihan intensif bagi karyawan baru."
+      },
+      {
+        title: "Skalabilitas Tinggi",
+        description: "Solusi fleksibel yang dapat disesuaikan dengan pertumbuhan dan kebutuhan bisnis."
+      },
+      {
+        title: "Peningkatan Kepuasan Pelanggan",
+        description: "Proses logistik yang cepat dan akurat meningkatkan kepuasan dan loyalitas pelanggan."
+      }
+    ],
+    useCases: [
+      "Perusahaan e-commerce dengan volume pengiriman tinggi",
+      "Gudang distribusi besar yang ingin meningkatkan akurasi inventaris",
+      "Industri manufaktur yang membutuhkan manajemen bahan baku dan hasil produksi",
+      "Logistik internal perusahaan ritel"
+    ],
+    specs: {
+      "Deployment": "Cloud / On-premise",
+      "Bahasa Antarmuka": "Bahasa Indonesia, English",
+      "Platform": "Web",
+      "Integrasi": "Barcode Scanner, RFID Reader, API",
+      "Keamanan": "Role-Based Access Control, Enkripsi Data",
+      "Penyimpanan": "Tidak Terbatas (berdasarkan langganan)"
+    },
+  },
+
+  {
+    id: 5,
+    slug: "antlia-tms",
+    name: "ANTLIA TMS",
+    description: "Sistem manajemen transportasi untuk optimasi logistik, pengurangan biaya, dan peningkatan kepuasan pelanggan.",
+    longDescription: "ANTLIA TMS adalah solusi digital yang dirancang untuk membantu perusahaan mengelola seluruh aspek transportasi dan logistik secara efisien. Sistem ini menawarkan otomatisasi proses seperti perencanaan rute, pemilihan carrier, pelacakan pengiriman, dan analisis biaya transportasi. Integrasi kuat dengan ERP dan WMS membuat aliran data lancar, visibilitas rantai pasok meningkat, dan pengambilan keputusan menjadi lebih cepat dan akurat.",
+    image: "/assets/product-5.jpg",
+    gallery: [],
+    category: "Software",
+    features: [
+      {
+        title: "Perencanaan Rute & Pemilihan Carrier",
+        description: "Optimalkan rute pengiriman dan pilih carrier terbaik berdasarkan biaya, waktu, dan kapasitas."
+      },
+      {
+        title: "Pelacakan Pengiriman Real-Time",
+        description: "Pantau status pengiriman dari titik awal hingga tujuan secara langsung."
+      },
+      {
+        title: "Manajemen Armada",
+        description: "Kelola kondisi kendaraan, jadwal pemeliharaan, dan ketersediaan armada."
+      },
+      {
+        title: "Analisis & Pelaporan",
+        description: "Akses laporan menyeluruh tentang kinerja transportasi, biaya, dan kepuasan pelanggan."
+      },
+      {
+        title: "Integrasi dengan Sistem Lain",
+        description: "Terintegrasi dengan ERP, WMS, dan sistem bisnis lainnya untuk sinkronisasi data yang mulus."
+      }
+    ],
+    benefits: [
+      {
+        title: "Efisiensi Operasional Transportasi",
+        description: "Otomatisasi proses mengurangi beban kerja manual dan meningkatkan akurasi."
+      },
+      {
+        title: "Pengurangan Biaya Logistik",
+        description: "Analisis biaya dan optimasi rute membantu meningkatkan profitabilitas."
+      },
+      {
+        title: "Visibilitas & Kontrol Penuh",
+        description: "Monitor seluruh aktivitas transportasi untuk pengambilan keputusan yang lebih baik."
+      },
+      {
+        title: "Peningkatan Kepuasan Pelanggan",
+        description: "Pengiriman yang tepat waktu dan akurat meningkatkan loyalitas pelanggan."
+      },
+      {
+        title: "Fleksibilitas & Skalabilitas",
+        description: "Cocok untuk bisnis kecil maupun besar dan bisa berkembang seiring kebutuhan."
+      }
+    ],
+    useCases: [
+      "Perusahaan logistik yang ingin meningkatkan efisiensi armada",
+      "E-commerce dengan kebutuhan distribusi luas",
+      "Perusahaan manufaktur yang mengelola pengiriman produk",
+      "Bisnis retail dengan cabang banyak dan pengiriman rutin"
+    ],
+    specs: {
+      "Deployment": "Cloud / On-premise",
+      "Bahasa Antarmuka": "Bahasa Indonesia, English",
+      "Platform": "Web",
+      "Integrasi": "API, ERP, WMS",
+      "Keamanan": "Login Multi-Level, Enkripsi End-to-End",
+      "Penyimpanan": "Tidak Terbatas (berdasarkan paket langganan)"
+    },
+  },
+
+  {
+    id: 6,
+    slug: "antlia-iot",
+    name: "ANTLIA IoT",
+    description: "Solusi Internet of Things untuk pemantauan real-time aset dan proses bisnis melalui dashboard cloud.",
+    longDescription: "ANTLIA IoT adalah platform Internet of Things (IoT) yang membantu perusahaan memantau dan mengelola aset fisik serta proses bisnis secara real-time melalui perangkat terhubung dan dashboard berbasis cloud. Solusi ini dapat terintegrasi dengan ERP, WMS, dan TMS, sehingga memberikan visibilitas penuh, meningkatkan efisiensi operasional, serta mendukung pengambilan keputusan berbasis data secara real-time.",
+    image: "/assets/product-6.jpg",
+    gallery: [],
+    category: "Software + Hardware",
+    features: [
+      {
+        title: "Dashboard Pemantauan",
+        description: "Antarmuka intuitif untuk memantau kondisi aset dan proses bisnis secara real-time."
+      },
+      {
+        title: "Integrasi Perangkat IoT",
+        description: "Dukungan sensor suhu, kelembaban, GPS, dan perangkat IoT lainnya."
+      },
+      {
+        title: "Penyimpanan Data Cloud",
+        description: "Data aman dan dapat diakses kapan saja dari mana saja melalui infrastruktur cloud."
+      },
+      {
+        title: "Notifikasi & Peringatan Otomatis",
+        description: "Sistem akan memberikan notifikasi jika ada kondisi yang memerlukan tindakan segera."
+      },
+      {
+        title: "Analisis Data",
+        description: "Alat analitik untuk mengevaluasi data dan mendukung pengambilan keputusan strategis."
+      }
+    ],
+    benefits: [
+      {
+        title: "Pemantauan Real-Time",
+        description: "Pantau kondisi aset dan proses secara langsung untuk respons yang cepat."
+      },
+      {
+        title: "Efisiensi Operasional",
+        description: "Otomatisasi dan pemantauan mengurangi kebutuhan intervensi manual."
+      },
+      {
+        title: "Pengurangan Biaya",
+        description: "Identifikasi pemborosan dan prediksi masalah sebelum terjadi kerusakan besar."
+      },
+      {
+        title: "Integrasi Kuat",
+        description: "Terhubung dengan sistem ERP, WMS, dan TMS untuk sinergi operasional."
+      },
+      {
+        title: "Peningkatan Kualitas Layanan",
+        description: "Respons cepat terhadap masalah meningkatkan kepuasan dan loyalitas pelanggan."
+      }
+    ],
+    useCases: [
+      "Perusahaan manufaktur yang memantau kondisi mesin",
+      "Distribusi logistik dengan monitoring suhu atau lokasi",
+      "Pertanian presisi dengan sensor lingkungan",
+      "Rumah sakit yang memantau peralatan medis vital"
+    ],
+    specs: {
+      "Deployment": "Cloud / On-premise",
+      "Bahasa Antarmuka": "Bahasa Indonesia, English",
+      "Platform": "Web, Mobile",
+      "Integrasi": "Sensor IoT, API, Dashboard Terpadu",
+      "Keamanan": "Enkripsi Data, Role-Based Access",
+      "Penyimpanan": "Tidak Terbatas (berdasarkan paket)"
+    },
+  },
+
+  {
+    id: 7,
+    slug: "antlia-hrm",
+    name: "ANTLIA HRM",
+    description: "Sistem manajemen sumber daya manusia untuk otomatisasi rekrutmen, penggajian, pelatihan, dan kinerja karyawan.",
+    longDescription: "ANTLIA HRM adalah solusi digital yang membantu perusahaan mengelola seluruh aspek sumber daya manusia secara terintegrasi dan efisien. Dengan fitur otomatisasi proses HR seperti absensi, cuti, penggajian, dan rekrutmen, sistem ini meningkatkan produktivitas tim HR sekaligus memudahkan akses informasi bagi karyawan. Sistem ini dirancang fleksibel untuk mendukung kebutuhan perusahaan dari berbagai ukuran dan sektor industri.",
+    image: "/assets/product-7.jpg",
+    gallery: [],
+    category: "Software",
+    features: [
+      {
+        title: "Integrasi Sistem yang Terpadu",
+        description: "Terintegrasi dengan sistem ERP dan Payroll untuk pengelolaan data karyawan yang efisien dan terpusat."
+      },
+      {
+        title: "Automasi Proses HR",
+        description: "Mempercepat proses absensi, cuti, penggajian, dan rekrutmen dengan fitur otomatisasi canggih."
+      },
+      {
+        title: "User Interface yang Mudah Digunakan",
+        description: "Antarmuka intuitif yang mudah diakses oleh HR maupun karyawan tanpa pelatihan intensif."
+      },
+      {
+        title: "Skalabilitas dan Fleksibilitas",
+        description: "Dapat disesuaikan dengan kebutuhan perusahaan besar atau kecil serta bisa dikembangkan seiring pertumbuhan bisnis."
+      },
+      {
+        title: "Keamanan Data Karyawan",
+        description: "Perlindungan mutakhir untuk menjaga kerahasiaan dan integritas data personal karyawan."
+      },
+      {
+        title: "Dukungan Pelanggan Profesional",
+        description: "Tim dukungan teknis dan pelatihan tersedia untuk memastikan implementasi sistem berjalan lancar dan maksimal."
+      }
+    ],
+    benefits: [
+      {
+        title: "Efisiensi Manajemen SDM",
+        description: "Proses administratif HR lebih cepat dan akurat dengan bantuan otomatisasi."
+      },
+      {
+        title: "Peningkatan Produktivitas Karyawan",
+        description: "Karyawan dapat mengakses informasi penting seperti slip gaji, jadwal cuti, dan evaluasi kinerja secara mandiri."
+      },
+      {
+        title: "Pengambilan Keputusan Berbasis Data",
+        description: "Data karyawan dan kinerja tersedia real-time untuk analisis dan perencanaan strategis SDM."
+      },
+      {
+        title: "Fleksibilitas Bisnis",
+        description: "Sistem yang bisa dikustomisasi untuk berbagai jenis industri dan skala usaha."
+      },
+      {
+        title: "Peningkatan Retensi Karyawan",
+        description: "Manajemen kinerja dan pelatihan yang baik meningkatkan kepuasan dan loyalitas karyawan."
+      }
+    ],
+    useCases: [
+      "Perusahaan dengan ratusan karyawan yang ingin mengotomatiskan manajemen SDM",
+      "Startup yang membutuhkan sistem HR yang mudah digunakan dan murah",
+      "BUMN atau instansi pemerintah yang ingin modernisasi administrasi kepegawaian",
+      "Perusahaan multinasional yang butuh sistem HR terpadu di berbagai cabang"
+    ],
+    specs: {
+      "Deployment": "Cloud / On-premise",
+      "Bahasa Antarmuka": "Bahasa Indonesia, English",
+      "Platform": "Web, Mobile",
+      "Integrasi": "ERP, Payroll, API, Webhooks",
+      "Keamanan": "Role-Based Access Control, Enkripsi End-to-End, Backup Otomatis",
+      "Penyimpanan": "Tidak Terbatas (berdasarkan paket langganan)"
+    },
+  }
   // Add more product details as needed
 ];
 
@@ -206,13 +612,7 @@ const ProductDetailPage = () => {
               </Link>
               <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
               <div className="flex items-center mb-6">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star 
-                    key={index} 
-                    className={`w-5 h-5 ${index < Math.floor(product.rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-400'}`}
-                  />
-                ))}
-                <span className="ml-2">{product.rating}</span>
+        
               </div>
               <p className="text-gray-700 mb-6">{product.longDescription}</p>
               <div className="flex flex-wrap gap-4">
@@ -335,7 +735,7 @@ const ProductDetailPage = () => {
       </section>
       
       {/* FAQ */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Questions & Answers</span>
@@ -356,7 +756,7 @@ const ProductDetailPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
       
       {/* CTA Section */}
       <section className="py-16 bg-antlia-light">

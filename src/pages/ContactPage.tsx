@@ -68,7 +68,7 @@ const ContactPage = () => {
       <PageHero 
         title="Hubungi Kami" 
         subtitle="Tim kami siap membantu Anda dengan pertanyaan dan kebutuhan Anda"
-        backgroundImage="/assets/clients-hero-bg.jpg"
+        backgroundImage="/assets/kontak.jpg"
       />
       
       {/* Contact Info & Form */}
@@ -93,8 +93,10 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Telepon</h3>
-                      <p className="text-gray-600 mb-2">Senin - Jumat, 09:00 - 17:00</p>
-                      <a href="tel:+6281573635143" className="text-antlia-blue hover:underline">+62 815-7363-5143</a>
+                      <p className="text-gray-600 mb-2">Produk (Pak Roni)</p>
+                      <a href="tel:+6287762877273" className="text-antlia-blue hover:underline">+62 87762877273</a>
+                      <p className="text-gray-600 mb-2">Training (Angela )</p>
+                      <a href="tel:+6287702770999" className="text-antlia-blue hover:underline">+62 87702770999</a>
                     </div>
                   </div>
                 </CardContent>
@@ -108,8 +110,10 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Email</h3>
-                      <p className="text-gray-600 mb-2">Respons dalam 24 jam</p>
-                      <a href="mailto:info@antlia.id" className="text-antlia-blue hover:underline">info@antlia.id</a>
+                      <p className="text-gray-600 mb-2">Produk </p>
+                      <a href="mailto:hotmian@technokingindonesia.com" className="text-antlia-blue hover:underline">hotmian@technokingindonesia.com</a>
+                      <p className="text-gray-600 mb-2">training </p>
+                      <a href="mailto:angela@techokingindonesia.com" className="text-antlia-blue hover:underline">angela@techokingindonesia.com</a>
                     </div>
                   </div>
                 </CardContent>
@@ -123,11 +127,10 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Kantor Pusat</h3>
-                      <p className="text-gray-600 mb-2">Jakarta</p>
+                      <p className="text-gray-600 mb-2">Tangerang</p>
                       <address className="text-gray-600 not-italic">
-                        Jalan Sudirman No. 123<br />
-                        Jakarta Selatan, 12190<br />
-                        Indonesia
+                      The Avani Nittaya, BSD City,<br />
+                      Cisauk, Banten, Tangerang<br />
                       </address>
                     </div>
                   </div>
@@ -143,8 +146,9 @@ const ContactPage = () => {
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Jam Kerja</h3>
                       <div className="text-gray-600">
-                        <p className="mb-1">Senin - Jumat: 09:00 - 17:00</p>
-                        <p>Sabtu - Minggu: Tutup</p>
+                        <p className="mb-1">Senin - Jumat: 08:00 - 17:00</p>
+                        <p>Sabtu : 08:00 - 14.00</p>
+                        <p>Customer Services : 24/7</p>
                       </div>
                     </div>
                   </div>
@@ -307,45 +311,7 @@ const ContactPage = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-on-scroll">
-            <span className="subtitle block mb-2">Questions & Answers</span>
-            <h2 className="text-3xl font-bold mb-4">Pertanyaan Umum</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Jawaban untuk pertanyaan yang sering diajukan tentang layanan kami
-            </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto">
-            {[
-              {
-                question: "Bagaimana cara memulai kerjasama dengan ANTLIA?",
-                answer: "Proses kerja sama dimulai dengan konsultasi awal untuk memahami kebutuhan Anda. Silakan hubungi kami melalui formulir kontak, email, atau telepon untuk mengatur jadwal konsultasi."
-              },
-              {
-                question: "Berapa biaya untuk layanan ANTLIA?",
-                answer: "Biaya layanan kami bervariasi tergantung pada jenis dan skala proyek. Kami menawarkan penawaran yang disesuaikan berdasarkan kebutuhan spesifik Anda. Hubungi kami untuk mendapatkan penawaran yang sesuai dengan proyek Anda."
-              },
-              {
-                question: "Berapa lama waktu yang dibutuhkan untuk menyelesaikan proyek?",
-                answer: "Durasi proyek bergantung pada kompleksitas dan ruang lingkupnya. Proyek sederhana dapat selesai dalam beberapa minggu, sementara proyek yang lebih kompleks mungkin membutuhkan beberapa bulan. Kami akan memberikan estimasi yang realistis setelah konsultasi awal."
-              },
-              {
-                question: "Apakah ANTLIA menyediakan dukungan setelah proyek selesai?",
-                answer: "Ya, kami menawarkan paket dukungan dan pemeliharaan pasca-peluncuran untuk memastikan solusi Anda tetap berjalan optimal. Kami juga menyediakan pelatihan pengguna dan dokumentasi lengkap."
-              }
-            ].map((faq, index) => (
-              <Card key={index} className="mb-4 animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
-                  <p className="text-gray-600">{faq.answer}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+  
     </>
   );
 };
