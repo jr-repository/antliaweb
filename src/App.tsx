@@ -1,19 +1,20 @@
+
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { Toaster } from '@/components/ui/toaster';
-import MainLayout from '@/layouts/MainLayout';
-import AdminLayout from '@/layouts/AdminLayout';
-import HomePage from '@/pages/HomePage';
-import ArticlesPage from '@/pages/ArticlesPage';
-import ArticleDetailPage from '@/pages/ArticleDetailPage';
-import AdminLoginPage from '@/pages/AdminLoginPage';
-import AdminDashboardPage from '@/pages/AdminDashboardPage';
-import AdminArticlesPage from '@/pages/AdminArticlesPage';
-import ArticleFormPage from '@/pages/ArticleFormPage';
-import NotFound from '@/pages/NotFound';
-import PlaceholderPage from '@/pages/PlaceholderPage';
-import ContactPage from '@/pages/ContactPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from './components/ui/toaster';
+import MainLayout from './components/MainLayout';
+import AdminLayout from './components/admin/AdminLayout';
+import HomePage from './pages/HomePage';
+import ArticlesPage from './pages/ArticlesPage';
+import ArticleDetailPage from './pages/ArticleDetailPage';
+import AdminLoginPage from './pages/admin/AdminLoginPage';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import AdminArticlesPage from './pages/admin/AdminArticlesPage';
+import ArticleFormPage from './pages/admin/ArticleFormPage';
+import NotFound from './pages/NotFound';
+import PlaceholderPage from './pages/PlaceholderPage';
+import ContactPage from './pages/ContactPage';
 
 const queryClient = new QueryClient();
 

@@ -1,17 +1,18 @@
 
 import React from "react";
-import * as LucideIcons from "lucide-react";
+import * as Icons from "lucide-react";
 
 interface FeatureCardProps {
   title: string;
   description: string;
-  icon: keyof typeof LucideIcons;
+  icon: string;
   delay?: number;
 }
 
 const FeatureCard = ({ title, description, icon, delay = 0 }: FeatureCardProps) => {
-  // Check if the icon exists in lucide-react
-  const IconComponent = LucideIcons[icon];
+  // Safely access the icon by name
+  // @ts-ignore - This is required because we're accessing icons dynamically
+  const LucideIcon = Icons[icon as keyof typeof Icons] || Icons.Circle;
   
   return (
     <div 
@@ -20,7 +21,7 @@ const FeatureCard = ({ title, description, icon, delay = 0 }: FeatureCardProps) 
     >
       <div className="flex flex-col items-center text-center">
         <div className="mb-4 p-3 bg-antlia-blue/10 rounded-full">
-          {IconComponent ? <IconComponent className="w-8 h-8 text-antlia-blue" /> : <div className="w-8 h-8" />}
+          <LucideIcon className="w-8 h-8 text-antlia-blue" />
         </div>
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-gray-600">{description}</p>
