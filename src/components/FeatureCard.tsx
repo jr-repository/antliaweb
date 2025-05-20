@@ -1,38 +1,34 @@
 
 import React from "react";
-import * as Icons from "lucide-react";
-import { CheckCircle } from "lucide-react";  // Import a fallback icon explicitly
+import { Card, CardContent } from "@/components/ui/card";
+import * as LucideIcons from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface FeatureCardProps {
   title: string;
   description: string;
-  icon: string;
+  icon: keyof typeof LucideIcons;
   delay?: number;
 }
 
 const FeatureCard = ({ title, description, icon, delay = 0 }: FeatureCardProps) => {
-  // Determine which icon to display based on the icon prop
-  let IconComponent: React.ElementType = CheckCircle; // Default fallback
-  
-  // Only try to access a dynamic icon if it exists in the Icons object
-  if (icon && typeof icon === 'string' && icon in Icons) {
-    // Use type assertion to tell TypeScript this is a React component
-    IconComponent = Icons[icon as keyof typeof Icons] as React.ElementType;
-  }
+  // Get the specific icon component from Lucide icons
+  const IconComponent = LucideIcons[icon] as LucideIcon;
   
   return (
-    <div 
-      className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 animate-on-scroll" 
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <div className="flex flex-col items-center text-center">
-        <div className="mb-4 p-3 bg-antlia-blue/10 rounded-full">
-          <IconComponent className="w-8 h-8 text-antlia-blue" />
+    <Card className="hover:shadow-md transition-shadow duration-300 overflow-hidden animate-on-scroll" style={{animationDelay: `${delay}ms`}}>
+      <CardContent className="p-6">
+        <div className="flex items-start">
+          <div className="mr-4 p-2 bg-antlia-blue/10 rounded-lg">
+            {IconComponent && <IconComponent className="w-6 h-6 text-antlia-blue" />}
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-2">{title}</h3>
+            <p className="text-gray-600">{description}</p>
+          </div>
         </div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

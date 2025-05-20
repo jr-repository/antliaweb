@@ -4,10 +4,8 @@ import { useLocation } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Phone, Mail, MapPin, Clock, CheckCircle, ArrowRight, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react";
 import FeatureCard from "@/components/FeatureCard";
-import ProductDetailCard from "@/components/ProductDetailCard";
-import { Link } from "react-router-dom";
 
 const PlaceholderPage = () => {
   const location = useLocation();
@@ -39,12 +37,6 @@ const PlaceholderPage = () => {
       backgroundImage: "/assets/clients-hero-bg.jpg",
       content: "klien"
     },
-    "kontak": {
-      title: "Hubungi",
-      subtitle: "Mari berbicara tentang bagaimana kami dapat membantu bisnis Anda.",
-      backgroundImage: "/assets/contact-hero-bg.jpg",
-      content: "kontak"
-    }
   };
   
   const { title, subtitle, backgroundImage, content } = pageConfig[path as keyof typeof pageConfig] || {
@@ -85,8 +77,6 @@ const PlaceholderPage = () => {
         return renderSolutions();
       case "klien":
         return renderClients();
-      case "kontak":
-        return null; // Contact page is handled by ContactPage.tsx now
       default:
         return (
           <div className="py-16 text-center">
@@ -103,7 +93,7 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6 font-horizon">Sejarah ANTLIA</h2>
+              <h2 className="text-3xl font-bold mb-6">Sejarah ANTLIA</h2>
               <p className="text-gray-600 mb-4">
                 Didirikan pada tahun 2013, ANTLIA bermula sebagai startup kecil dengan visi besar: 
                 menghadirkan solusi teknologi kelas dunia yang dapat diakses oleh perusahaan Indonesia.
@@ -136,16 +126,16 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Visi & Misi</h2>
+            <h2 className="text-3xl font-bold mb-4">Visi & Misi</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Komitmen kami untuk masa depan yang lebih baik melalui teknologi
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="hover:shadow-lg transition-shadow duration-300 animate-on-scroll border-0 shadow-md">
+            <Card className="hover:shadow-md transition-shadow duration-300 animate-on-scroll">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-antlia-blue font-horizon">Visi Kami</h3>
+                <h3 className="text-2xl font-bold mb-4 text-antlia-blue">Visi Kami</h3>
                 <p className="text-gray-600 mb-4">
                   Menjadi pemimpin inovasi teknologi di Indonesia yang mendorong 
                   transformasi digital dengan solusi yang inklusif dan berkelanjutan.
@@ -167,9 +157,9 @@ const PlaceholderPage = () => {
               </CardContent>
             </Card>
             
-            <Card className="hover:shadow-lg transition-shadow duration-300 animate-on-scroll border-0 shadow-md" style={{animationDelay: '200ms'}}>
+            <Card className="hover:shadow-md transition-shadow duration-300 animate-on-scroll" style={{animationDelay: '200ms'}}>
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-antlia-cyan font-horizon">Misi Kami</h3>
+                <h3 className="text-2xl font-bold mb-4 text-antlia-cyan">Misi Kami</h3>
                 <p className="text-gray-600 mb-4">
                   Menghadirkan solusi teknologi yang inovatif, efektif, dan sesuai kebutuhan 
                   untuk membantu bisnis berkembang di era digital yang kompetitif.
@@ -197,7 +187,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Tim Kami</h2>
+            <h2 className="text-3xl font-bold mb-4">Tim Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Didukung oleh profesional berpengalaman yang berdedikasi untuk memberikan yang terbaik
             </p>
@@ -210,16 +200,12 @@ const PlaceholderPage = () => {
               {name: "Budi Santoso", position: "Lead Developer", image: "/assets/team-3.jpg"},
               {name: "Maya Putri", position: "UX Design Lead", image: "/assets/team-4.jpg"}
             ].map((member, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 overflow-hidden animate-on-scroll border-0 shadow-md group" style={{animationDelay: `${index * 100}ms`}}>
+              <Card key={index} className="hover:shadow-md transition-shadow duration-300 overflow-hidden animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
                 <CardContent className="p-0">
-                  <div className="h-60 overflow-hidden">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    />
+                  <div className="h-48 overflow-hidden">
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                   </div>
-                  <div className="p-6 text-center">
+                  <div className="p-4 text-center">
                     <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
                     <p className="text-gray-600">{member.position}</p>
                   </div>
@@ -237,53 +223,30 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Produk Unggulan Kami</h2>
+            <h2 className="text-3xl font-bold mb-4">Produk Unggulan Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Solusi digital terbaik yang dirancang khusus untuk memenuhi kebutuhan bisnis Anda
             </p>
           </div>
           
-          <div className="space-y-12">
-            <ProductDetailCard
-              id="antlia-crm"
-              name="ANTLIA CRM"
-              description="ANTLIA CRM adalah sistem manajemen pelanggan komprehensif yang dirancang untuk membantu bisnis membangun hubungan lebih kuat dengan pelanggan mereka. Sistem ini menyediakan pandangan 360 derajat terhadap interaksi pelanggan, memungkinkan tim penjualan dan dukungan untuk memberikan layanan yang lebih personal dan efisien."
-              image="/assets/product-crm.jpg"
-              features={[
-                { text: "Manajemen kontak dan akun pelanggan yang terintegrasi" },
-                { text: "Pelacakan interaksi dan riwayat komunikasi pelanggan" },
-                { text: "Otomatisasi pemasaran dan penjualan" },
-                { text: "Analitik pelanggan dan laporan performa" },
-                { text: "Integrasi dengan platform email dan media sosial" }
-              ]}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <FeatureCard 
+              title="ANTLIA CRM" 
+              description="Sistem manajemen pelanggan komprehensif untuk mengoptimalkan hubungan dengan klien Anda"
+              icon="Users"
+              delay={100}
             />
-
-            <ProductDetailCard
-              id="antlia-erp"
-              name="ANTLIA ERP"
-              description="ANTLIA ERP adalah solusi perencanaan sumber daya perusahaan yang menghubungkan semua aspek operasional bisnis Anda dalam satu platform terpadu. Dari manajemen inventaris hingga keuangan, ANTLIA ERP membantu bisnis meningkatkan efisiensi dan mengoptimalkan proses mereka."
-              image="/assets/product-erp.jpg"
-              features={[
-                { text: "Manajemen inventaris dan rantai pasok real-time" },
-                { text: "Sistem akuntansi dan keuangan terintegrasi" },
-                { text: "Manajemen proyek dan sumber daya" },
-                { text: "Analitik bisnis dan pelaporan komprehensif" },
-                { text: "Akses mobile untuk operasional di mana saja" }
-              ]}
+            <FeatureCard 
+              title="ANTLIA ERP" 
+              description="Solusi Enterprise Resource Planning terintegrasi untuk efisiensi operasional bisnis"
+              icon="BarChart"
+              delay={200}
             />
-
-            <ProductDetailCard
-              id="antlia-analytics"
-              name="ANTLIA Analytics"
-              description="ANTLIA Analytics adalah platform analitik data canggih yang mengubah data mentah menjadi wawasan bisnis yang dapat ditindaklanjuti. Dengan kemampuan visualisasi data yang kuat dan algoritma pembelajaran mesin, bisnis dapat mengidentifikasi tren, memprediksi perilaku pelanggan, dan membuat keputusan berbasis data."
-              image="/assets/product-analytics.jpg"
-              features={[
-                { text: "Dasbor visualisasi data yang dapat disesuaikan" },
-                { text: "Pemodelan prediktif dan analisis tren" },
-                { text: "Segmentasi pelanggan berbasis AI" },
-                { text: "Laporan otomatis dan terjadwal" },
-                { text: "Integrasi dengan berbagai sumber data" }
-              ]}
+            <FeatureCard 
+              title="ANTLIA Analytics" 
+              description="Platform analitik data untuk mengubah data mentah menjadi wawasan bisnis yang berharga"
+              icon="PieChart"
+              delay={300}
             />
           </div>
         </div>
@@ -292,7 +255,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Layanan Profesional</h2>
+            <h2 className="text-3xl font-bold mb-4">Layanan Profesional</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Jasa konsultasi dan implementasi teknologi oleh tim ahli berpengalaman
             </p>
@@ -303,53 +266,44 @@ const PlaceholderPage = () => {
               {
                 title: "Pengembangan Aplikasi Kustom",
                 description: "Membangun aplikasi yang disesuaikan dengan kebutuhan spesifik bisnis Anda",
-                icon: "Code",
-                link: "/produk-layanan/pengembangan-aplikasi"
+                icon: "Code"
               },
               {
                 title: "Konsultasi IT",
                 description: "Pemetaan strategi teknologi untuk mendukung tujuan bisnis Anda",
-                icon: "MessageSquare",
-                link: "/produk-layanan/konsultasi-it"
+                icon: "MessageSquare"
               },
               {
                 title: "Cloud Migration",
                 description: "Migrasi sistem ke cloud dengan aman dan efisien untuk skalabilitas yang lebih baik",
-                icon: "Cloud",
-                link: "/produk-layanan/cloud-migration"
+                icon: "Cloud"
               },
               {
                 title: "Keamanan Cyber",
                 description: "Lindungi aset digital Anda dengan solusi keamanan siber komprehensif",
-                icon: "Shield",
-                link: "/produk-layanan/keamanan-cyber"
+                icon: "Shield"
               },
               {
                 title: "Pengembangan Web & Mobile",
                 description: "Wujudkan kehadiran digital Anda dengan aplikasi web dan mobile yang responsif",
-                icon: "Smartphone",
-                link: "/produk-layanan/pengembangan-web-mobile"
+                icon: "Smartphone"
               },
               {
                 title: "Analisis Data & BI",
                 description: "Ekstrak nilai dari data Anda untuk pengambilan keputusan yang lebih baik",
-                icon: "Database",
-                link: "/produk-layanan/analisis-data-bi"
+                icon: "Database"
               }
             ].map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 animate-on-scroll border-0 shadow-md group" style={{animationDelay: `${index * 100}ms`}}>
+              <Card key={index} className="hover:shadow-md transition-shadow duration-300 animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
                 <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="mb-4 p-3 bg-antlia-blue/10 rounded-full group-hover:bg-antlia-blue/20 transition-colors">
-                      <CheckCircle className="w-8 h-8 text-antlia-blue" />
+                  <div className="flex items-start">
+                    <div className="mr-4 p-2 bg-antlia-blue/10 rounded-lg">
+                      <CheckCircle className="w-6 h-6 text-antlia-blue" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                    <p className="text-gray-600 mb-5">{service.description}</p>
-                    <Button variant="outline" className="mt-auto border-antlia-blue text-antlia-blue hover:bg-antlia-blue/10">
-                      <Link to={service.link} className="flex items-center">
-                        Detail Layanan <ExternalLink size={16} className="ml-2" />
-                      </Link>
-                    </Button>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                      <p className="text-gray-600">{service.description}</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -362,7 +316,7 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6 font-horizon">Dukungan & Pelatihan</h2>
+              <h2 className="text-3xl font-bold mb-6">Dukungan & Pelatihan</h2>
               <p className="text-gray-600 mb-6">
                 Kami memastikan keberhasilan implementasi dengan dukungan teknis 24/7 dan 
                 program pelatihan komprehensif untuk tim Anda.
@@ -396,12 +350,6 @@ const PlaceholderPage = () => {
                   </div>
                 </div>
               </div>
-              
-              <Button className="mt-8 bg-antlia-blue hover:bg-antlia-blue/80">
-                <Link to="/kontak" className="flex items-center">
-                  Hubungi Tim Support <ArrowRight size={16} className="ml-2" />
-                </Link>
-              </Button>
             </div>
             <div className="order-1 lg:order-2 animate-on-scroll" style={{animationDelay: '200ms'}}>
               <img
@@ -422,32 +370,32 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6 font-horizon">Solusi Industri</h2>
+              <h2 className="text-3xl font-bold mb-6">Solusi Industri</h2>
               <p className="text-gray-600 mb-6">
                 ANTLIA menyediakan solusi yang dirancang khusus untuk berbagai sektor industri, 
                 memahami tantangan unik yang dihadapi oleh setiap sektor dan menghadirkan teknologi 
                 yang relevan untuk mengatasi tantangan tersebut.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                <Card className="border-antlia-blue/20 hover:bg-antlia-blue/5 transition-colors">
+                <Card className="border-antlia-blue/20">
                   <CardContent className="p-4">
                     <h3 className="text-lg font-semibold mb-2">Perbankan & Keuangan</h3>
                     <p className="text-sm text-gray-600">Solusi keamanan dan analitik untuk lembaga keuangan</p>
                   </CardContent>
                 </Card>
-                <Card className="border-antlia-blue/20 hover:bg-antlia-blue/5 transition-colors">
+                <Card className="border-antlia-blue/20">
                   <CardContent className="p-4">
                     <h3 className="text-lg font-semibold mb-2">Ritel & E-commerce</h3>
                     <p className="text-sm text-gray-600">Platform omnichannel untuk pengalaman pelanggan terbaik</p>
                   </CardContent>
                 </Card>
-                <Card className="border-antlia-blue/20 hover:bg-antlia-blue/5 transition-colors">
+                <Card className="border-antlia-blue/20">
                   <CardContent className="p-4">
                     <h3 className="text-lg font-semibold mb-2">Manufaktur</h3>
                     <p className="text-sm text-gray-600">Otomatisasi dan optimasi proses produksi</p>
                   </CardContent>
                 </Card>
-                <Card className="border-antlia-blue/20 hover:bg-antlia-blue/5 transition-colors">
+                <Card className="border-antlia-blue/20">
                   <CardContent className="p-4">
                     <h3 className="text-lg font-semibold mb-2">Kesehatan</h3>
                     <p className="text-sm text-gray-600">Sistem manajemen data pasien dan telemedicine</p>
@@ -469,7 +417,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Solusi Transformasi Digital</h2>
+            <h2 className="text-3xl font-bold mb-4">Solusi Transformasi Digital</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Pendekatan holistik untuk transformasi digital bisnis Anda
             </p>
@@ -501,7 +449,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Metodologi Kami</h2>
+            <h2 className="text-3xl font-bold mb-4">Metodologi Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Pendekatan terstruktur untuk memastikan kesuksesan proyek transformasi digital Anda
             </p>
@@ -563,7 +511,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Klien Kami</h2>
+            <h2 className="text-3xl font-bold mb-4">Klien Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Perusahaan terkemuka yang mempercayakan transformasi digital mereka kepada ANTLIA
             </p>
@@ -571,7 +519,7 @@ const PlaceholderPage = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-              <div key={num} className="flex items-center justify-center p-6 bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow animate-on-scroll" style={{animationDelay: `${num * 50}ms`}}>
+              <div key={num} className="flex items-center justify-center p-6 bg-white rounded-lg shadow-sm border animate-on-scroll" style={{animationDelay: `${num * 50}ms`}}>
                 <img 
                   src={`/assets/client-${num}.png`} 
                   alt={`Client ${num}`} 
@@ -582,7 +530,7 @@ const PlaceholderPage = () => {
           </div>
           
           <div className="text-center animate-on-scroll">
-            <h3 className="text-2xl font-semibold mb-6 font-horizon">Industri Kami Layani</h3>
+            <h3 className="text-2xl font-semibold mb-6">Industri Kami Layani</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 "Perbankan & Keuangan", 
@@ -610,7 +558,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4 font-horizon">Studi Kasus</h2>
+            <h2 className="text-3xl font-bold mb-4">Studi Kasus</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Kisah sukses transformasi digital bersama klien kami
             </p>
@@ -640,7 +588,7 @@ const PlaceholderPage = () => {
                 result: "25% pengurangan biaya operasional"
               }
             ].map((study, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-on-scroll border-0 shadow-md" style={{animationDelay: `${index * 100}ms`}}>
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={study.image} 
@@ -667,7 +615,7 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg">
             <div className="p-8 md:p-12 text-white">
-              <h2 className="text-3xl font-bold mb-4 font-horizon">Bergabunglah dengan Klien Kami</h2>
+              <h2 className="text-3xl font-bold mb-4">Bergabunglah dengan Klien Kami</h2>
               <p className="mb-6 max-w-2xl">
                 Mulai perjalanan transformasi digital bersama ANTLIA dan rasakan perbedaannya. 
                 Tim kami siap membantu Anda menavigasi tantangan dan memanfaatkan peluang era digital.
@@ -689,13 +637,8 @@ const PlaceholderPage = () => {
     </>
   );
 
-  // If it's the contact page, we should use the dedicated ContactPage component
-  if (content === "kontak") {
-    return null;
-  }
-
   return (
-    <div className="font-poppins">
+    <div>
       <PageHero title={title} subtitle={subtitle} backgroundImage={backgroundImage} />
       {renderContent()}
     </div>

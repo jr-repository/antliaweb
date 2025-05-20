@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -41,10 +41,10 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-  <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-    <CardContent className="p-8 bg-gradient-to-br from-white to-antlia-light/50 rounded-xl h-full flex flex-col">
+  <Card className="border-none shadow-none">
+    <CardContent className="p-6 bg-white rounded-xl shadow-md">
       <div className="flex flex-col items-center text-center">
-        <div className="mb-6 relative">
+        <div className="mb-4 relative">
           <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-antlia-blue">
             <img 
               src={testimonial.avatar} 
@@ -52,23 +52,23 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-antlia-cyan rounded-full p-1 shadow-md">
+          <div className="absolute -bottom-2 -right-2 bg-antlia-cyan rounded-full p-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
               <path d="M10 11h2v5M10 11V9a2 2 0 114 0v2M7 15h8M7 6h2v4M2 20h20"></path>
             </svg>
           </div>
         </div>
         
-        <div className="mb-5">
+        <div className="mb-4">
           {Array(5).fill(0).map((_, i) => (
             <span key={i} className="text-yellow-400">★</span>
           ))}
         </div>
         
-        <p className="text-gray-600 mb-6 italic leading-relaxed">"{testimonial.text}"</p>
+        <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
         
-        <div className="mt-auto">
-          <h4 className="font-semibold text-lg">{testimonial.name}</h4>
+        <div>
+          <h4 className="font-semibold">{testimonial.name}</h4>
           <p className="text-gray-500 text-sm">{testimonial.position}</p>
         </div>
       </div>
@@ -81,7 +81,7 @@ const TestimonialsSlider = () => {
     <section className="py-16 bg-antlia-light">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-on-scroll">
-          <h2 className="text-3xl font-bold mb-4 font-horizon">Apa Kata Klien Kami</h2>
+          <h2 className="text-3xl font-bold mb-4">Apa Kata Klien Kami</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Kami telah membantu berbagai perusahaan dalam transformasi digital mereka.
             Berikut adalah apa yang mereka katakan tentang kami.
@@ -99,15 +99,13 @@ const TestimonialsSlider = () => {
             <CarouselContent>
               {testimonials.map((testimonial) => (
                 <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/2 pl-4">
-                  <div className="h-full">
-                    <TestimonialCard testimonial={testimonial} />
-                  </div>
+                  <TestimonialCard testimonial={testimonial} />
                 </CarouselItem>
               ))}
             </CarouselContent>
             <div className="flex justify-center mt-8">
-              <CarouselPrevious className="relative static mr-2 bg-antlia-blue/10 hover:bg-antlia-blue/20 text-antlia-blue border-0" />
-              <CarouselNext className="relative static ml-2 bg-antlia-blue/10 hover:bg-antlia-blue/20 text-antlia-blue border-0" />
+              <CarouselPrevious className="relative static mr-2" />
+              <CarouselNext className="relative static ml-2" />
             </div>
           </Carousel>
         </div>
