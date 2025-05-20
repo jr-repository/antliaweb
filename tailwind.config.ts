@@ -74,6 +74,11 @@ export default {
           light: '#f7f8fa',
         }
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        general: ['General Sans', 'sans-serif'],
+        satoshi: ['Satoshi', 'sans-serif']
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

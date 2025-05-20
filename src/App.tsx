@@ -9,12 +9,19 @@ import AdminLayout from "./components/admin/AdminLayout";
 import HomePage from "./pages/HomePage";
 import ArticlesPage from "./pages/ArticlesPage";
 import ArticleDetailPage from "./pages/ArticleDetailPage";
-import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import AdminArticlesPage from "./pages/admin/AdminArticlesPage";
 import ArticleFormPage from "./pages/admin/ArticleFormPage";
+import ProductsPage from "./pages/ProductsPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import ServicesPage from "./pages/ServicesPage";
+import ServiceDetailPage from "./pages/ServiceDetailPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import SolutionsPage from "./pages/SolutionsPage";
+import ClientsPage from "./pages/ClientsPage";
+import ContactPage from "./pages/ContactPage";
 
 const queryClient = new QueryClient();
 
@@ -28,10 +35,14 @@ const App = () => (
           {/* Main Site Routes */}
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="produk-layanan" element={<PlaceholderPage />} />
-            <Route path="tentang-kami" element={<PlaceholderPage />} />
-            <Route path="solusi" element={<PlaceholderPage />} />
-            <Route path="klien" element={<PlaceholderPage />} />
+            <Route path="produk-layanan" element={<ProductsPage />} />
+            <Route path="produk/:slug" element={<ProductDetailPage />} />
+            <Route path="layanan" element={<ServicesPage />} />
+            <Route path="layanan/:slug" element={<ServiceDetailPage />} />
+            <Route path="tentang-kami" element={<AboutUsPage />} />
+            <Route path="solusi" element={<SolutionsPage />} />
+            <Route path="klien" element={<ClientsPage />} />
+            <Route path="kontak" element={<ContactPage />} />
             <Route path="artikel" element={<ArticlesPage />} />
             <Route path="artikel/:slug" element={<ArticleDetailPage />} />
           </Route>

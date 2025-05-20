@@ -10,13 +10,58 @@ import {
   CardFooter
 } from "@/components/ui/card";
 import { ChevronRight, Phone, Mail, ArrowRight, CheckCircle } from "lucide-react";
-import HeroSection from "@/components/HeroSection";
+import HeroCarousel from "@/components/HeroCarousel";
 import ServicesSection from "@/components/ServicesSection";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import PartnerLogos from "@/components/PartnerLogos";
+import LogoMarquee from "@/components/LogoMarquee";
 import FeatureCard from "@/components/FeatureCard";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import TeamSection from "@/components/TeamSection";
+
+const partners = [
+  { id: 1, name: "Company A", logo: "/assets/partner-1.png" },
+  { id: 2, name: "Company B", logo: "/assets/partner-2.png" },
+  { id: 3, name: "Company C", logo: "/assets/partner-3.png" },
+  { id: 4, name: "Company D", logo: "/assets/partner-4.png" },
+  { id: 5, name: "Company E", logo: "/assets/partner-5.png" },
+  { id: 6, name: "Company F", logo: "/assets/partner-6.png" },
+];
+
+const teamMembers = [
+  {
+    name: "Ahmad Rasyid",
+    position: "CEO & Founder",
+    image: "/assets/team-1.jpg",
+    bio: "Memiliki pengalaman 15 tahun di industri teknologi informasi dengan fokus pada solusi enterprise.",
+    linkedin: "https://linkedin.com",
+    email: "ahmad@antlia.id"
+  },
+  {
+    name: "Siti Nuraini",
+    position: "CTO",
+    image: "/assets/team-2.jpg",
+    bio: "Ahli teknologi dengan spesialisasi di cloud computing dan arsitektur sistem terdistribusi.",
+    linkedin: "https://linkedin.com",
+    email: "siti@antlia.id"
+  },
+  {
+    name: "Budi Santoso",
+    position: "Lead Developer",
+    image: "/assets/team-3.jpg",
+    bio: "Pengembang senior dengan keahlian di berbagai bahasa pemrograman dan framework modern.",
+    linkedin: "https://linkedin.com",
+    email: "budi@antlia.id"
+  },
+  {
+    name: "Maya Putri",
+    position: "UX Design Lead",
+    image: "/assets/team-4.jpg",
+    bio: "Desainer UX berpengalaman dengan fokus pada menciptakan pengalaman digital yang intuitif dan efisien.",
+    linkedin: "https://linkedin.com",
+    email: "maya@antlia.id"
+  }
+];
 
 const HomePage = () => {
   const isMobile = useIsMobile();
@@ -49,12 +94,13 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <HeroSection />
+      <HeroCarousel />
       
       {/* Value Proposition Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
+            <span className="subtitle block mb-2">Why Choose Us</span>
             <h2 className="text-3xl font-bold mb-4">Mengapa Memilih ANTLIA?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               ANTLIA menyediakan solusi teknologi terbaik untuk membantu bisnis Anda
@@ -88,6 +134,81 @@ const HomePage = () => {
       
       {/* Services Section */}
       <ServicesSection />
+      
+      {/* Featured Products */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 animate-on-scroll">
+            <span className="subtitle block mb-2">Our Products</span>
+            <h2 className="text-3xl font-bold mb-4">Produk Unggulan</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Solusi perangkat lunak terbaik untuk membantu bisnis Anda berkembang dan bersaing
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "ANTLIA CRM",
+                description: "Sistem manajemen pelanggan komprehensif dengan fitur otomatisasi dan analitik",
+                image: "/assets/product-1.jpg"
+              },
+              {
+                title: "ANTLIA ERP",
+                description: "Solusi Enterprise Resource Planning terintegrasi untuk efisiensi operasional bisnis",
+                image: "/assets/product-2.jpg"
+              },
+              {
+                title: "ANTLIA Analytics",
+                description: "Platform analitik data untuk mengubah data mentah menjadi wawasan bisnis yang berharga",
+                image: "/assets/product-3.jpg"
+              }
+            ].map((product, index) => (
+              <Card key={index} className="product-card overflow-hidden animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
+                <div className="h-52 overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                  <div className="product-overlay">
+                    <h3 className="text-xl font-bold mb-2">{product.title}</h3>
+                    <Button className="mt-4 bg-antlia-blue hover:bg-antlia-blue/80">
+                      <Link to="/produk-layanan">Lihat Detail</Link>
+                    </Button>
+                  </div>
+                </div>
+                <CardContent className="p-5">
+                  <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
+                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <Link 
+                    to="/produk-layanan" 
+                    className="text-antlia-blue hover:underline flex items-center font-medium"
+                  >
+                    Lihat Detail <ArrowRight className="ml-1 w-4 h-4" />
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="text-center mt-10 animate-on-scroll">
+            <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
+              <Link to="/produk-layanan" className="flex items-center">
+                Lihat Semua Produk <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      {/* Team Section */}
+      <TeamSection 
+        title="Tim Ahli Kami" 
+        subtitle="Meet Our Experts"
+        description="Didukung oleh profesional berpengalaman yang berdedikasi untuk memberikan yang terbaik"
+        members={teamMembers}
+      />
       
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-antlia-blue/10 to-antlia-cyan/10">
@@ -137,12 +258,13 @@ const HomePage = () => {
       <TestimonialsSlider />
       
       {/* Partner Logos */}
-      <PartnerLogos />
+      <LogoMarquee logos={partners} />
       
       {/* Blog Preview Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
+            <span className="subtitle block mb-2">Latest Updates</span>
             <h2 className="text-3xl font-bold mb-4">Artikel Terbaru</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Temukan informasi terbaru seputar teknologi dan inovasi digital
