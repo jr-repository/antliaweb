@@ -45,7 +45,8 @@ const ArticleDetailPage = () => {
             publishedAt: data.published_at,
             coverImage: data.cover_image,
             status: data.status,
-            readingTime: data.reading_time
+            readingTime: data.reading_time,
+            images: data.images || [] // Make sure to include images
           });
         }
       } catch (error: any) {
@@ -153,7 +154,7 @@ const ArticleDetailPage = () => {
             <img 
               src={article.coverImage} 
               alt={article.title} 
-              className="w-full h-auto rounded-lg"
+              className="w-full h-auto max-h-[500px] object-cover rounded-lg"
             />
           </div>
         )}
@@ -162,6 +163,24 @@ const ArticleDetailPage = () => {
           className="prose prose-lg max-w-none"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+        
+        {/* Display article images in a gallery */}
+        {article.images && article.images.length > 0 && (
+          <div className="mt-10 mb-8">
+            <h3 className="text-2xl font-semibold mb-4">Galeri</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {article.images.map((imageUrl, index) => (
+                <div key={index} className="relative overflow-hidden rounded-lg shadow-md bg-gray-100">
+                  <img 
+                    src={imageUrl} 
+                    alt={`${article.title} - Gambar ${index + 1}`}
+                    className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         
         <footer className="mt-8 pt-8 border-t border-gray-200">
           <div className="flex flex-wrap gap-2">
