@@ -100,7 +100,7 @@ const ServicesPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Services</span>
-            <h2 className="text-3xl font-bold mb-4">Layanan Utama</h2>
+            <h2 className="text-xl font-bold mb-4">Layanan Utama</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Jasa profesional ANTLIA untuk membantu transformasi digital bisnis Anda
             </p>
@@ -145,7 +145,7 @@ const ServicesPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Professional Services</span>
-            <h2 className="text-3xl font-bold mb-4">Semua Layanan</h2>
+            <h2 className="text-xl font-bold mb-4">Semua Layanan</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Jelajahi berbagai jasa profesional untuk mendukung kebutuhan teknologi bisnis Anda
             </p>
@@ -183,7 +183,7 @@ const ServicesPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Methodology</span>
-            <h2 className="text-3xl font-bold mb-4">Pendekatan Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Pendekatan Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Bagaimana kami menghadirkan solusi yang efektif dan bernilai tinggi untuk klien kami
             </p>
@@ -252,7 +252,7 @@ const ServicesPage = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-4">Butuh Solusi Khusus?</h2>
+                <h2 className="text-xl font-bold mb-4">Butuh Solusi Khusus?</h2>
                 <p className="text-gray-600 mb-6 max-w-xl">
                 Tim ANTLIA siap membantu Anda dengan solusi yang disesuaikan dengan kebutuhan spesifik bisnis Anda.
                   Hubungi kami sekarang untuk konsultasi gratis.                </p>

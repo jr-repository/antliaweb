@@ -161,7 +161,7 @@ const ServiceDetailPage = () => {
   if (!service) {
     return (
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-3xl font-bold mb-4">Layanan tidak ditemukan</h1>
+        <h1 className="text-xl font-bold mb-4">Layanan tidak ditemukan</h1>
         <p className="mb-6">Maaf, layanan yang Anda cari tidak ditemukan.</p>
         <Link to="/layanan" className="text-antlia-blue hover:underline flex items-center">
           <ArrowLeft className="mr-2" /> Kembali ke Daftar Layanan
@@ -223,7 +223,7 @@ const ServiceDetailPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Methodology</span>
-            <h2 className="text-3xl font-bold mb-4">Proses Kerja Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Proses Kerja Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Pendekatan sistematis kami untuk menghadirkan {service.name} berkualitas tinggi
             </p>
@@ -254,7 +254,7 @@ const ServiceDetailPage = () => {
             {/* Deliverables */}
             <div className="animate-on-scroll">
               <span className="subtitle block mb-2">What You Get</span>
-              <h2 className="text-3xl font-bold mb-6">Deliverables</h2>
+              <h2 className="text-xl font-bold mb-6">Deliverables</h2>
               <div className="bg-antlia-light p-6 rounded-lg">
                 <ul className="space-y-4">
                   {service.deliverables.map((item, index) => (
@@ -270,7 +270,7 @@ const ServiceDetailPage = () => {
             {/* Benefits */}
             <div className="animate-on-scroll" style={{animationDelay: "200ms"}}>
               <span className="subtitle block mb-2">Advantages</span>
-              <h2 className="text-3xl font-bold mb-6">Manfaat</h2>
+              <h2 className="text-xl font-bold mb-6">Manfaat</h2>
               <div className="bg-antlia-light p-6 rounded-lg">
                 <ul className="space-y-4">
                   {service.benefits.map((benefit, index) => (
@@ -296,7 +296,7 @@ const ServiceDetailPage = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-4">Siap untuk Mendiskusikan Proyek Anda?</h2>
+                <h2 className="text-xl font-bold mb-4">Siap untuk Mendiskusikan Proyek Anda?</h2>
                 <p className="text-gray-600 mb-6 max-w-xl">
                 Tim ANTLIA siap membantu Anda dengan solusi IT Consulting yang disesuaikan dengan kebutuhan bisnis Anda. Hubungi kami sekarang untuk konsultasi awal.                </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">

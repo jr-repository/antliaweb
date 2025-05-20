@@ -349,7 +349,7 @@ const ArticleFormPage = () => {
           <ArrowLeft className="h-4 w-4 mr-1" />
           Kembali
         </Button>
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-xl font-bold">
           {isEditMode ? "Edit Artikel" : "Artikel Baru"}
         </h1>
       </div>

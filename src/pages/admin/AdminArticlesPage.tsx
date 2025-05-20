@@ -127,7 +127,7 @@ const AdminArticlesPage = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Kelola Artikel</h1>
+          <h1 className="text-xl font-bold">Kelola Artikel</h1>
           <p className="text-gray-600">Tambah, edit, dan hapus artikel.</p>
         </div>
         <Button 

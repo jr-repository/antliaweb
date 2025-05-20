@@ -85,7 +85,7 @@ const AdminDashboardPage = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Dashboard Admin</h1>
+        <h1 className="text-xl font-bold mb-2">Dashboard Admin</h1>
         <p className="text-gray-600">Selamat datang di panel admin ANTLIA.</p>
       </div>
 
@@ -98,7 +98,7 @@ const AdminDashboardPage = () => {
             <FileText className="h-5 w-5 text-antlia-blue" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{statistics.totalArticles}</div>
+            <div className="text-xl font-bold">{statistics.totalArticles}</div>
             <p className="text-sm text-gray-600 mt-1">
               {statistics.publishedArticles} dipublikasikan, {statistics.draftArticles} draft
             </p>
@@ -113,7 +113,7 @@ const AdminDashboardPage = () => {
             <Users className="h-5 w-5 text-antlia-purple" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">
+            <div className="text-xl font-bold">
               {statistics.uniqueAuthors}
             </div>
             <p className="text-sm text-gray-600 mt-1">
@@ -130,7 +130,7 @@ const AdminDashboardPage = () => {
             <Calendar className="h-5 w-5 text-antlia-cyan" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">
+            <div className="text-xl font-bold">
               {statistics.monthlyArticles}
             </div>
             <p className="text-sm text-gray-600 mt-1">

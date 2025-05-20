@@ -73,7 +73,7 @@ const AdminLoginPage = () => {
       <Card className="w-[350px] shadow-lg">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-4">
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-antlia-blue to-antlia-cyan bg-clip-text text-transparent">
+            <h2 className="text-xl font-bold bg-gradient-to-r from-antlia-blue to-antlia-cyan bg-clip-text text-transparent">
               ANTLIA
             </h2>
           </div>

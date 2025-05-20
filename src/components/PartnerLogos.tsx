@@ -15,7 +15,7 @@ const PartnerLogos = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-on-scroll">
-          <h2 className="text-3xl font-bold mb-4">Mitra Kami</h2>
+          <h2 className="text-xl font-bold mb-4">Mitra Kami</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Kami telah bekerja sama dengan berbagai perusahaan terkemuka
             untuk memberikan solusi teknologi terbaik.

@@ -79,7 +79,7 @@ const ContactPage = () => {
             <div className="lg:col-span-1 animate-on-scroll">
               <div className="mb-8">
                 <span className="subtitle block mb-2">Get in Touch</span>
-                <h2 className="text-3xl font-bold mb-4">Informasi Kontak</h2>
+                <h2 className="text-xl font-bold mb-4">Informasi Kontak</h2>
                 <p className="text-gray-600">
                   Hubungi kami untuk konsultasi, informasi lebih lanjut, atau mulai kerjasama.
                 </p>
@@ -289,7 +289,7 @@ const ContactPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 animate-on-scroll">
             <span className="subtitle block mb-2">Our Location</span>
-            <h2 className="text-3xl font-bold mb-4">Temukan Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Temukan Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Kunjungi kantor kami untuk diskusi langsung dengan tim ANTLIA
             </p>

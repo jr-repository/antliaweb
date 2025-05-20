@@ -87,7 +87,7 @@ const AboutUsPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <span className="subtitle block mb-2">Cerita Kami</span>
-              <h2 className="text-3xl font-bold mb-6">Tentang ANTLIA</h2>
+              <h2 className="text-xl font-bold mb-6">Tentang ANTLIA</h2>
               <p className="text-gray-600 mb-4">
               Terinspirasi dari konstelasi Antlia yang berarti “pompa”, kami hadir sebagai energi pendorong inovasi di dunia digital. Filosofi ini sejalan dengan visi misi kami: mendukung pertumbuhan ekonomi global lewat solusi teknologi yang efisien, hemat biaya, dan ramah lingkungan.
               </p>
@@ -106,7 +106,7 @@ const AboutUsPage = () => {
                 className="rounded-xl shadow-xl w-full h-auto"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-lg">
-                <p className="text-3xl font-bold text-antlia-blue">10+</p>
+                <p className="text-xl font-bold text-antlia-blue">10+</p>
                 <p className="text-gray-600">Tahun Pengalaman</p>
               </div>
             </div>
@@ -119,7 +119,7 @@ const AboutUsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Journey</span>
-            <h2 className="text-3xl font-bold mb-4">Milestone Perjalanan Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Milestone Perjalanan Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Perjalanan ANTLIA dalam menghadirkan solusi teknologi terbaik untuk Indonesia
             </p>
@@ -185,7 +185,7 @@ const AboutUsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Purpose</span>
-            <h2 className="text-3xl font-bold mb-4">Visi & Misi</h2>
+            <h2 className="text-xl font-bold mb-4">Visi & Misi</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Komitmen kami untuk masa depan yang lebih baik melalui teknologi
             </p>
@@ -262,7 +262,7 @@ f</span>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Guiding Principles</span>
-            <h2 className="text-3xl font-bold mb-4">Nilai-Nilai Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Nilai-Nilai Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Prinsip-prinsip yang menjadi fondasi setiap keputusan dan tindakan kami
             </p>
@@ -332,7 +332,7 @@ f</span>
           <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg animate-on-scroll">
             <div className="p-8 md:p-12 text-white">
               <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl font-bold mb-4">Jadilah Bagian dari Perjalanan Kami</h2>
+                <h2 className="text-xl font-bold mb-4">Jadilah Bagian dari Perjalanan Kami</h2>
                 <p className="mb-6">
                   Apakah Anda mencari solusi teknologi untuk bisnis Anda atau berminat untuk bergabung dengan tim kami?
                   Hubungi kami sekarang untuk memulai percakapan.

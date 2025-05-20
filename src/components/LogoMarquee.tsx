@@ -20,7 +20,7 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({
       <div className="container mx-auto px-4 mb-10">
         <div className="text-center animate-on-scroll">
           <span className="subtitle block mb-2">{title}</span>
-          <h2 className="text-3xl font-bold mb-4">Dipercaya oleh Perusahaan Terkemuka</h2>
+          <h2 className="text-xl font-bold mb-4">Dipercaya oleh Perusahaan Terkemuka</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             {subtitle}
           </p>

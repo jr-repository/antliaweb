@@ -40,19 +40,19 @@ const HeroSection = () => {
           
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center hover:bg-white/20 transition-colors">
-              <h3 className="text-antlia-cyan text-3xl font-bold mb-1">500+</h3>
+              <h3 className="text-antlia-cyan text-xl font-bold mb-1">500+</h3>
               <p className="text-white text-sm">Klien Puas</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center hover:bg-white/20 transition-colors">
-              <h3 className="text-antlia-cyan text-3xl font-bold mb-1">10+</h3>
+              <h3 className="text-antlia-cyan text-xl font-bold mb-1">10+</h3>
               <p className="text-white text-sm">Tahun Pengalaman</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center hover:bg-white/20 transition-colors">
-              <h3 className="text-antlia-cyan text-3xl font-bold mb-1">50+</h3>
+              <h3 className="text-antlia-cyan text-xl font-bold mb-1">50+</h3>
               <p className="text-white text-sm">Tim Ahli</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center hover:bg-white/20 transition-colors">
-              <h3 className="text-antlia-cyan text-3xl font-bold mb-1">99%</h3>
+              <h3 className="text-antlia-cyan text-xl font-bold mb-1">99%</h3>
               <p className="text-white text-sm">Uptime Layanan</p>
             </div>
           </div>

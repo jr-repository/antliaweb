@@ -565,7 +565,7 @@ const ProductDetailPage = () => {
   if (!product) {
     return (
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-3xl font-bold mb-4">Produk tidak ditemukan</h1>
+        <h1 className="text-xl font-bold mb-4">Produk tidak ditemukan</h1>
         <p className="mb-6">Maaf, produk yang Anda cari tidak ditemukan.</p>
         <Link to="/produk-layanan" className="text-antlia-blue hover:underline flex items-center">
           <ArrowLeft className="mr-2" /> Kembali ke Daftar Produk
@@ -642,7 +642,7 @@ const ProductDetailPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Key Features</span>
-            <h2 className="text-3xl font-bold mb-4">Fitur Utama</h2>
+            <h2 className="text-xl font-bold mb-4">Fitur Utama</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Jelajahi fitur-fitur unggulan dari {product.name} yang akan membantu bisnis Anda
             </p>
@@ -673,7 +673,7 @@ const ProductDetailPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Core Benefits</span>
-            <h2 className="text-3xl font-bold mb-4">Keunggulan & Manfaat</h2>
+            <h2 className="text-xl font-bold mb-4">Keunggulan & Manfaat</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Bagaimana {product.name} dapat membantu meningkatkan kinerja bisnis Anda
             </p>
@@ -702,7 +702,7 @@ const ProductDetailPage = () => {
             {/* Use Cases */}
             <div className="animate-on-scroll">
               <span className="subtitle block mb-2">Applications</span>
-              <h2 className="text-3xl font-bold mb-6">Use Cases</h2>
+              <h2 className="text-xl font-bold mb-6">Use Cases</h2>
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <ul className="space-y-4">
                   {product.useCases.map((useCase, index) => (
@@ -718,7 +718,7 @@ const ProductDetailPage = () => {
             {/* Specs */}
             <div className="animate-on-scroll" style={{animationDelay: "200ms"}}>
               <span className="subtitle block mb-2">Technical Details</span>
-              <h2 className="text-3xl font-bold mb-6">Spesifikasi</h2>
+              <h2 className="text-xl font-bold mb-6">Spesifikasi</h2>
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <dl>
                   {Object.entries(product.specs).map(([key, value], index) => (
@@ -739,7 +739,7 @@ const ProductDetailPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Questions & Answers</span>
-            <h2 className="text-3xl font-bold mb-4">Pertanyaan Umum</h2>
+            <h2 className="text-xl font-bold mb-4">Pertanyaan Umum</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Jawaban untuk pertanyaan yang sering diajukan tentang {product.name}
             </p>
@@ -764,7 +764,7 @@ const ProductDetailPage = () => {
           <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg animate-on-scroll">
             <div className="p-8 md:p-12 text-white">
               <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl font-bold mb-4">Siap untuk Meningkatkan Performa Bisnis Anda?</h2>
+                <h2 className="text-xl font-bold mb-4">Siap untuk Meningkatkan Performa Bisnis Anda?</h2>
                 <p className="mb-6">
                   Hubungi tim ANTLIA sekarang untuk konsultasi gratis dan demo {product.name}.
                   Biarkan kami menunjukkan bagaimana produk ini dapat membantu bisnis Anda berkembang.

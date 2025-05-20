@@ -93,7 +93,7 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6">Sejarah ANTLIA</h2>
+              <h2 className="text-xl font-bold mb-6">Sejarah ANTLIA</h2>
               <p className="text-gray-600 mb-4">
                 Didirikan pada tahun 2013, ANTLIA bermula sebagai startup kecil dengan visi besar: 
                 menghadirkan solusi teknologi kelas dunia yang dapat diakses oleh perusahaan Indonesia.
@@ -126,7 +126,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Visi & Misi</h2>
+            <h2 className="text-xl font-bold mb-4">Visi & Misi</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Komitmen kami untuk masa depan yang lebih baik melalui teknologi
             </p>
@@ -187,7 +187,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Tim Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Tim Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Didukung oleh profesional berpengalaman yang berdedikasi untuk memberikan yang terbaik
             </p>
@@ -223,7 +223,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Produk Unggulan Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Produk Unggulan Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Solusi digital terbaik yang dirancang khusus untuk memenuhi kebutuhan bisnis Anda
             </p>
@@ -255,7 +255,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Layanan Profesional</h2>
+            <h2 className="text-xl font-bold mb-4">Layanan Profesional</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Jasa konsultasi dan implementasi teknologi oleh tim ahli berpengalaman
             </p>
@@ -316,7 +316,7 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6">Dukungan & Pelatihan</h2>
+              <h2 className="text-xl font-bold mb-6">Dukungan & Pelatihan</h2>
               <p className="text-gray-600 mb-6">
                 Kami memastikan keberhasilan implementasi dengan dukungan teknis 24/7 dan 
                 program pelatihan komprehensif untuk tim Anda.
@@ -370,7 +370,7 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6">Solusi Industri</h2>
+              <h2 className="text-xl font-bold mb-6">Solusi Industri</h2>
               <p className="text-gray-600 mb-6">
                 ANTLIA menyediakan solusi yang dirancang khusus untuk berbagai sektor industri, 
                 memahami tantangan unik yang dihadapi oleh setiap sektor dan menghadirkan teknologi 
@@ -417,7 +417,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Solusi Transformasi Digital</h2>
+            <h2 className="text-xl font-bold mb-4">Solusi Transformasi Digital</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Pendekatan holistik untuk transformasi digital bisnis Anda
             </p>
@@ -449,7 +449,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Metodologi Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Metodologi Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Pendekatan terstruktur untuk memastikan kesuksesan proyek transformasi digital Anda
             </p>
@@ -511,7 +511,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Klien Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Klien Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Perusahaan terkemuka yang mempercayakan transformasi digital mereka kepada ANTLIA
             </p>
@@ -558,7 +558,7 @@ const PlaceholderPage = () => {
       <section className="py-16 bg-antlia-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl font-bold mb-4">Studi Kasus</h2>
+            <h2 className="text-xl font-bold mb-4">Studi Kasus</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Kisah sukses transformasi digital bersama klien kami
             </p>
@@ -615,7 +615,7 @@ const PlaceholderPage = () => {
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg">
             <div className="p-8 md:p-12 text-white">
-              <h2 className="text-3xl font-bold mb-4">Bergabunglah dengan Klien Kami</h2>
+              <h2 className="text-xl font-bold mb-4">Bergabunglah dengan Klien Kami</h2>
               <p className="mb-6 max-w-2xl">
                 Mulai perjalanan transformasi digital bersama ANTLIA dan rasakan perbedaannya. 
                 Tim kami siap membantu Anda menavigasi tantangan dan memanfaatkan peluang era digital.

@@ -97,7 +97,7 @@ const ClientsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Partners</span>
-            <h2 className="text-3xl font-bold mb-4">Klien Unggulan</h2>
+            <h2 className="text-xl font-bold mb-4">Klien Unggulan</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Perusahaan terkemuka yang mempercayakan transformasi digital mereka kepada ANTLIA
             </p>
@@ -135,7 +135,7 @@ const ClientsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Success Stories</span>
-            <h2 className="text-3xl font-bold mb-4">Studi Kasus</h2>
+            <h2 className="text-xl font-bold mb-4">Studi Kasus</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Kisah sukses transformasi digital bersama klien kami
             </p>
@@ -177,7 +177,7 @@ const ClientsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Client Feedback</span>
-            <h2 className="text-3xl font-bold mb-4">Testimoni</h2>
+            <h2 className="text-xl font-bold mb-4">Testimoni</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Apa yang dikatakan klien kami tentang pengalaman bekerja sama dengan ANTLIA
             </p>
@@ -243,7 +243,7 @@ const ClientsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Clientele</span>
-            <h2 className="text-3xl font-bold mb-4">Semua Klien</h2>
+            <h2 className="text-xl font-bold mb-4">Semua Klien</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Berbagai perusahaan dari berbagai industri yang telah bekerja sama dengan ANTLIA
             </p>
@@ -286,7 +286,7 @@ const ClientsPage = () => {
           <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg animate-on-scroll">
             <div className="p-8 md:p-12 text-white">
               <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl font-bold mb-4">Bergabunglah dengan Klien Kami</h2>
+                <h2 className="text-xl font-bold mb-4">Bergabunglah dengan Klien Kami</h2>
                 <p className="mb-6">
                   Mulai perjalanan transformasi digital bersama ANTLIA dan rasakan perbedaannya. 
                   Tim kami siap membantu Anda menavigasi tantangan dan memanfaatkan peluang era digital.

@@ -101,7 +101,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Why Choose Us</span>
-            <h2 className="text-3xl font-bold mb-4">Mengapa Memilih ANTLIA?</h2>
+            <h2 className="text-xl font-bold mb-4">Mengapa Memilih ANTLIA?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               ANTLIA menyediakan solusi teknologi terbaik untuk membantu bisnis Anda
               berkembang di era digital. Kami menggabungkan keahlian teknologi dengan
@@ -140,7 +140,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Products</span>
-            <h2 className="text-3xl font-bold mb-4">Produk Unggulan</h2>
+            <h2 className="text-xl font-bold mb-4">Produk Unggulan</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Solusi perangkat lunak terbaik untuk membantu bisnis Anda berkembang dan bersaing
             </p>
@@ -219,7 +219,7 @@ const HomePage = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-4">Siap untuk Transformasi Digital?</h2>
+                <h2 className="text-xl font-bold mb-4">Siap untuk Transformasi Digital?</h2>
                 <p className="text-gray-600 mb-6 max-w-xl">
                   Mari diskusikan bagaimana ANTLIA dapat membantu bisnis Anda berkembang
                   melalui solusi teknologi yang inovatif dan efisien.
@@ -265,7 +265,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Latest Updates</span>
-            <h2 className="text-3xl font-bold mb-4">Artikel Terbaru</h2>
+            <h2 className="text-xl font-bold mb-4">Artikel Terbaru</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Temukan informasi terbaru seputar teknologi dan inovasi digital
               di blog ANTLIA.

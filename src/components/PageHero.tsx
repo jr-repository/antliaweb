@@ -23,7 +23,7 @@ const PageHero = ({ title, subtitle, backgroundImage = "/assets/hero-bg-alt.jpg"
       {/* Content */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-3xl animate-fade-in">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h1 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             {title} <span className="text-antlia-cyan">ANTLIA</span>
           </h1>
           {subtitle && (

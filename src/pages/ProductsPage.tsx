@@ -126,7 +126,7 @@ const ProductsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">antlia Produk</span>
-            <h2 className="text-3xl font-bold mb-4">Semua Produk Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Semua Produk Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Produk-produk unggulan kami yang telah terbukti memberikan nilai tambah signifikan bagi bisnis
             </p>
@@ -180,7 +180,7 @@ const ProductsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Solutions</span>
-            <h2 className="text-3xl font-bold mb-4">Semua Produk Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Semua Produk Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Jelajahi berbagai solusi perangkat lunak yang kami kembangkan untuk berbagai kebutuhan bisnis
             </p>
@@ -244,7 +244,7 @@ const ProductsPage = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-4">Tidak Menemukan Produk yang Anda Cari?</h2>
+                <h2 className="text-xl font-bold mb-4">Tidak Menemukan Produk yang Anda Cari?</h2>
                 <p className="text-gray-600 mb-6 max-w-xl">
                 ANTLIA juga menyediakan solusi kustom yang dirancang khusus untuk memenuhi kebutuhan spesifik bisnis Anda. Tim pengembangan kami siap bekerja sama dengan Anda untuk menciptakan solusi yang tepat.
                 </p>

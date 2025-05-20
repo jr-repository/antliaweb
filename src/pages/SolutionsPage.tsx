@@ -42,7 +42,7 @@ const SolutionsPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <span className="subtitle block mb-2">Industry Focus</span>
-              <h2 className="text-3xl font-bold mb-6">Solusi Industri</h2>
+              <h2 className="text-xl font-bold mb-6">Solusi Industri</h2>
               <p className="text-gray-600 mb-6">
                 ANTLIA menyediakan solusi yang dirancang khusus untuk berbagai sektor industri, 
                 memahami tantangan unik yang dihadapi oleh setiap sektor dan menghadirkan teknologi 
@@ -92,7 +92,7 @@ const SolutionsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Digital Evolution</span>
-            <h2 className="text-3xl font-bold mb-4">Solusi Transformasi Digital</h2>
+            <h2 className="text-xl font-bold mb-4">Solusi Transformasi Digital</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Pendekatan holistik untuk transformasi digital bisnis Anda
             </p>
@@ -126,7 +126,7 @@ const SolutionsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Innovations</span>
-            <h2 className="text-3xl font-bold mb-4">Solusi Unggulan</h2>
+            <h2 className="text-xl font-bold mb-4">Solusi Unggulan</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Temukan solusi inovatif yang kami kembangkan untuk mengatasi tantangan bisnis modern
             </p>
@@ -211,7 +211,7 @@ const SolutionsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Approach</span>
-            <h2 className="text-3xl font-bold mb-4">Metodologi Kami</h2>
+            <h2 className="text-xl font-bold mb-4">Metodologi Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Pendekatan terstruktur untuk memastikan kesuksesan proyek transformasi digital Anda
             </p>
@@ -268,7 +268,7 @@ const SolutionsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Results & Impact</span>
-            <h2 className="text-3xl font-bold mb-4">Hasil Bisnis</h2>
+            <h2 className="text-xl font-bold mb-4">Hasil Bisnis</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Dampak nyata yang dihasilkan oleh solusi ANTLIA untuk bisnis klien kami
             </p>
@@ -319,7 +319,7 @@ const SolutionsPage = () => {
           <div className="bg-gradient-to-r from-antlia-blue to-antlia-cyan rounded-xl overflow-hidden shadow-lg animate-on-scroll">
             <div className="p-8 md:p-12 text-white">
               <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl font-bold mb-4">Mulai Transformasi Digital Anda</h2>
+                <h2 className="text-xl font-bold mb-4">Mulai Transformasi Digital Anda</h2>
                 <p className="mb-6">
                   Tim ANTLIA siap membantu Anda mengidentifikasi solusi yang tepat untuk kebutuhan bisnis Anda.
                   Hubungi kami sekarang untuk konsultasi awal.
