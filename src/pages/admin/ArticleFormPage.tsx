@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,10 +21,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Save } from "lucide-react";
+import { ArrowLeft, Save, Upload, X } from "lucide-react";
 import { Article } from "@/types/article";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const ArticleFormPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,6 +35,9 @@ const ArticleFormPage = () => {
   const isEditMode = id !== undefined && id !== "new";
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [uploadedImages, setUploadedImages] = useState<{url: string, file: File}[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const emptyArticle: Article = {
     id: "",
@@ -44,11 +50,39 @@ const ArticleFormPage = () => {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     publishedAt: new Date().toISOString(),
-    status: "draft", // This matches the updated type
+    status: "draft",
   };
 
   const [article, setArticle] = useState<Article>(emptyArticle);
   const [keywordsInput, setKeywordsInput] = useState("");
+
+  // Rich text editor modules and formats
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'direction': 'rtl' }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'font': [] }],
+      [{ 'align': [] }],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+  };
+  
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet',
+    'script',
+    'indent', 'direction',
+    'size', 'color', 'background', 'font',
+    'align', 'link', 'image', 'video'
+  ];
 
   // Fetch article data if in edit mode
   useEffect(() => {
@@ -84,11 +118,18 @@ const ArticleFormPage = () => {
             publishedAt: data.published_at,
             status: data.status,
             coverImage: data.cover_image,
-            readingTime: data.reading_time
+            readingTime: data.reading_time,
+            images: data.images || []
           };
 
           setArticle(fetchedArticle);
           setKeywordsInput(fetchedArticle.keywords.join(", "));
+          
+          // If there are images in the article, add them to the uploadedImages state
+          if (fetchedArticle.images && fetchedArticle.images.length > 0) {
+            const imageObjects = fetchedArticle.images.map(url => ({ url, file: new File([], "") }));
+            setUploadedImages(imageObjects);
+          }
         }
       } catch (error: any) {
         toast({
@@ -127,6 +168,13 @@ const ArticleFormPage = () => {
     }
   };
 
+  const handleContentChange = (content: string) => {
+    setArticle({
+      ...article,
+      content
+    });
+  };
+
   const handleSelectChange = (name: string, value: string) => {
     setArticle({
       ...article,
@@ -157,11 +205,77 @@ const ArticleFormPage = () => {
     });
   };
 
+  // Handle image upload
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    
+    setIsUploading(true);
+    const files = Array.from(e.target.files);
+    
+    try {
+      for (const file of files) {
+        // Create a unique filename to avoid collisions
+        const fileName = `${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
+        const filePath = `article-images/${fileName}`;
+        
+        // Upload to Supabase storage
+        const { data, error } = await supabase.storage
+          .from('articles')
+          .upload(filePath, file);
+          
+        if (error) {
+          throw error;
+        }
+        
+        // Get the public URL for the uploaded file
+        const { data: publicUrlData } = supabase.storage
+          .from('articles')
+          .getPublicUrl(filePath);
+          
+        // Add to uploaded images
+        if (publicUrlData) {
+          setUploadedImages((prev) => [
+            ...prev, 
+            { url: publicUrlData.publicUrl, file }
+          ]);
+        }
+      }
+      
+      toast({
+        title: "Berhasil",
+        description: "Gambar berhasil diunggah",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: `Gagal mengunggah gambar: ${error.message}`,
+        variant: "destructive",
+      });
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
+  // Remove uploaded image
+  const removeImage = (index: number) => {
+    setUploadedImages((prev) => {
+      const newImages = [...prev];
+      newImages.splice(index, 1);
+      return newImages;
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
     
     try {
+      // Get image URLs from uploadedImages state
+      const imageUrls = uploadedImages.map(img => img.url);
+      
       // Prepare data for Supabase - convert our Article type to database format
       const articleData = {
         title: article.title,
@@ -175,7 +289,8 @@ const ArticleFormPage = () => {
         reading_time: article.readingTime,
         cover_image: article.coverImage,
         status: article.status,
-        published_at: new Date(article.publishedAt).toISOString()
+        published_at: new Date(article.publishedAt).toISOString(),
+        images: imageUrls
       };
 
       let result;
@@ -298,19 +413,93 @@ const ArticleFormPage = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="content">Konten Artikel</Label>
-                  <Textarea
-                    id="content"
-                    name="content"
-                    placeholder="Tulis konten artikel dalam format HTML"
-                    value={article.content}
-                    onChange={handleInputChange}
-                    required
-                    className="min-h-[300px]"
-                  />
-                  <p className="text-sm text-gray-500">
-                    Gunakan format HTML untuk konten artikel.
+                  <div className="min-h-[300px] border rounded-md">
+                    <ReactQuill 
+                      theme="snow"
+                      value={article.content} 
+                      onChange={handleContentChange}
+                      modules={modules}
+                      formats={formats}
+                      placeholder="Tulis konten artikel di sini..."
+                      className="h-64"
+                    />
+                  </div>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Gunakan editor di atas untuk mengatur teks (bold, italic, dll) dan menambahkan gambar.
                   </p>
                 </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Upload Gambar</CardTitle>
+                <CardDescription>
+                  Upload gambar untuk artikel ini
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <input
+                    type="file"
+                    id="images"
+                    ref={fileInputRef}
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    multiple
+                    className="hidden"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={isUploading}
+                    className="w-full py-8 border-dashed"
+                  >
+                    {isUploading ? (
+                      <div className="flex items-center">
+                        <div className="animate-spin h-4 w-4 mr-2 border-t-2 border-b-2 border-antlia-blue rounded-full"></div>
+                        <span>Mengupload...</span>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center">
+                        <Upload className="h-8 w-8 mb-2 text-gray-400" />
+                        <span>Klik untuk upload gambar</span>
+                        <span className="text-xs text-gray-500">
+                          Atau drag dan drop file di sini
+                        </span>
+                      </div>
+                    )}
+                  </Button>
+                </div>
+
+                {uploadedImages.length > 0 && (
+                  <div className="mt-4">
+                    <h4 className="text-sm font-medium mb-2">Gambar yang telah diunggah:</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {uploadedImages.map((image, index) => (
+                        <div key={index} className="relative group">
+                          <img
+                            src={image.url}
+                            alt={`Uploaded ${index + 1}`}
+                            className="h-24 w-full object-cover rounded-md"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeImage(index)}
+                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                          <div className="mt-1 text-xs truncate">{image.file.name || `Image ${index + 1}`}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-sm text-gray-500 mt-2">
+                      Anda dapat menyisipkan URL gambar ini ke dalam konten artikel.
+                    </p>
+                  </div>
+                )}
               </CardContent>
             </Card>
 
@@ -506,6 +695,23 @@ const ArticleFormPage = () => {
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p className="text-gray-700">{article.excerpt || "Ringkasan artikel akan ditampilkan di sini."}</p>
                 </div>
+                
+                {/* Display uploaded images in the preview */}
+                {uploadedImages.length > 0 && (
+                  <div className="my-4">
+                    <h3 className="text-lg font-semibold mb-2">Gambar Artikel</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                      {uploadedImages.map((image, index) => (
+                        <img
+                          key={index}
+                          src={image.url}
+                          alt={`Article image ${index + 1}`}
+                          className="rounded-md shadow-sm"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
                 
                 <div className="prose max-w-none">
                   {article.content ? (

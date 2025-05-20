@@ -16,4 +16,5 @@ export interface Article {
   status: string; // Changed from "draft" | "published" to string to match Supabase data
   readingTime?: number;
   category?: string;
+  images?: string[]; // Added images array to store multiple image URLs
 }
