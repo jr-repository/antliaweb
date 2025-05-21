@@ -622,7 +622,7 @@ const PlaceholderPage = () => {
               </p>
               <Button className="bg-white text-antlia-blue hover:bg-white/90">
                 <a 
-                  href="https://wa.me/6281573635143" 
+                  href="https://wa.me/6287762877273" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center"

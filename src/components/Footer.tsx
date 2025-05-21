@@ -1,12 +1,11 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, ArrowRight } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Mail, MapPin, Phone, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -33,7 +32,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center mb-4">
@@ -43,37 +42,57 @@ const Footer = () => {
                 className="h-10 mr-3"
               />
               <h2 className="text-2xl font-bold bg-gradient-to-r from-antlia-blue to-antlia-cyan bg-clip-text text-transparent">
-               
+           
               </h2>
             </div>
             <p className="text-gray-300 mb-4">
               Menyediakan solusi teknologi inovatif untuk membantu bisnis Anda berkembang di era digital.
             </p>
             <div className="flex space-x-4">
-              <a 
+              {/* Facebook (tidak aktif karena tidak ada link) */}
+              {/* <a 
                 href="#" 
                 className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-antlia-blue/20 hover:text-antlia-cyan transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
-              </a>
+              </a> */}
+
+              {/* Instagram */}
               <a 
-                href="instagram.com/antlia.id" 
+                href="https://www.instagram.com/antlia.id/ " 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-antlia-blue/20 hover:text-antlia-cyan transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
+
+              {/* LinkedIn */}
               <a 
-                href="#" 
+                href="https://www.linkedin.com/company/antliabytechnoking/ " 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-antlia-blue/20 hover:text-antlia-cyan transition-colors"
-                aria-label="Twitter"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={18} />
+              </a>
+
+              {/* Threads
+              <a 
+                href="https://www.threads.com/ @antlia.id" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-antlia-blue/20 hover:text-antlia-cyan transition-colors"
+                aria-label="Threads"
               >
                 <Twitter size={18} />
-              </a>
+              </a> */}
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4">Menu</h3>
             <ul className="space-y-2 grid grid-cols-2">
@@ -108,52 +127,61 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/admin" className="text-gray-300 hover:text-antlia-cyan transition-colors">
+                  Manage Artikel
+                </Link>
+              </li>
+              <li>
                 <Link to="/kontak" className="text-gray-300 hover:text-antlia-cyan transition-colors">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/admin" className="text-gray-300 hover:text-antlia-cyan transition-colors">
-                  Manage Artikel
-                </Link>
+                <a 
+                  href="https://www.technokingindonesia.com " 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-antlia-cyan transition-colors"
+                >
+                  Other Website
+                </a>
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4">Hubungi Kami</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 text-antlia-cyan flex-shrink-0 mt-0.5" />
                 <span className="text-gray-300">
-                The Avani Nittaya, BSD City, <br />
-                Cisauk, Banten, Tangerang
+                  The Avani Nittaya, BSD City, <br />
+                  Cisauk, Banten, Tangerang
                 </span>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 text-antlia-cyan flex-shrink-0" />
                 <a href="mailto:hotmian@technokingindonesia.com" className="text-gray-300 hover:text-antlia-cyan transition-colors">
-                hotmian@technokingindonesia.com
+                  hotmian@technokingindonesia.com
                 </a>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 text-antlia-cyan flex-shrink-0" />
                 <a 
-
-                  href="https://wa.me/6287762877273" 
+                  href="https://wa.me/6287762877273 " 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-gray-300 hover:text-antlia-cyan transition-colors"
                 >
-                  +62 877-6287-7273 (Pak Roni) 
+                  +62 877-6287-7273 (Pak Roni)
                 </a>
               </li>
             </ul>
-            
+
             <div className="mt-6">
               <Button className="bg-antlia-blue hover:bg-antlia-blue/80 w-full">
                 <a 
-                  href="https://wa.me/6287762877273" 
+                  href="https://wa.me/6287762877273 " 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-full"
@@ -164,7 +192,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             © {currentYear} ANTLIA. All rights reserved.

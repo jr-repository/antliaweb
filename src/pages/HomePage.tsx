@@ -232,7 +232,7 @@ const HomePage = () => {
                   </Button>
                   <Button variant="outline" className="border-antlia-blue text-antlia-blue hover:bg-antlia-blue/10">
                     <a 
-                      href="https://wa.me/6281573635143" 
+                      href="https://wa.me/6287762877273" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center"

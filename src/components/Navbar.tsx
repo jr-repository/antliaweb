@@ -87,7 +87,7 @@ const Navbar = () => {
             <div className="ml-2">
               <Button className="bg-antlia-blue hover:bg-antlia-blue/80" size="sm">
                 <a 
-                  href="https://wa.me/6281573635143" 
+                  href="https://wa.me/6287762877273" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center"
@@ -128,7 +128,7 @@ const Navbar = () => {
             ))}
             <Button className="bg-antlia-blue hover:bg-antlia-blue/80 mt-4">
               <a 
-                href="https://wa.me/6281573635143" 
+                href="https://wa.me/6287762877273" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-full"

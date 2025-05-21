@@ -332,7 +332,7 @@ const SolutionsPage = () => {
                   </Button>
                   <Button variant="outline" className="border-white text-white hover:bg-white/10">
                     <a 
-                      href="https://wa.me/6281573635143" 
+                      href="https://wa.me/6287762877273" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center"
