@@ -1,5 +1,4 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
   Card,
@@ -18,6 +17,9 @@ import FeatureCard from "@/components/FeatureCard";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import TeamSection from "@/components/TeamSection";
+import { Article } from "@/types/article";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 const partners = [
   { id: 1, name: "Company A", logo: "/assets/partner-1.png" },
@@ -65,6 +67,62 @@ const teamMembers = [
 
 const HomePage = () => {
   const isMobile = useIsMobile();
+  const { toast } = useToast();
+  const [latestArticles, setLatestArticles] = useState<Article[]>([]);
+  const [isLoadingArticles, setIsLoadingArticles] = useState(true);
+  
+  // Fetch latest articles from Supabase
+  useEffect(() => {
+    const fetchLatestArticles = async () => {
+      try {
+        setIsLoadingArticles(true);
+        const { data, error } = await supabase
+          .from("articles")
+          .select("*")
+          .eq("status", "published")
+          .order("published_at", { ascending: false })
+          .limit(3);
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          const mappedArticles: Article[] = data.map(article => ({
+            id: article.id,
+            title: article.title,
+            slug: article.slug,
+            content: article.content,
+            excerpt: article.excerpt,
+            author: article.author,
+            authorEmail: article.author_email,
+            category: article.category,
+            keywords: article.keywords || [],
+            createdAt: article.created_at,
+            updatedAt: article.updated_at,
+            publishedAt: article.published_at,
+            coverImage: article.cover_image,
+            status: article.status,
+            readingTime: article.reading_time,
+            images: article.images || []
+          }));
+          
+          setLatestArticles(mappedArticles);
+        }
+      } catch (error: any) {
+        console.error("Error fetching latest articles:", error);
+        toast({
+          title: "Error",
+          description: `Gagal mengambil artikel terbaru: ${error.message}`,
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoadingArticles(false);
+      }
+    };
+
+    fetchLatestArticles();
+  }, [toast]);
   
   useEffect(() => {
     // Initialize AOS-like animations
@@ -101,7 +159,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Why Choose Us</span>
-            <h2 className="text-xl font-bold mb-4">Mengapa Memilih ANTLIA?</h2>
+            <h2 className="text-3xl font-bold mb-4">Mengapa Memilih ANTLIA?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               ANTLIA menyediakan solusi teknologi terbaik untuk membantu bisnis Anda
               berkembang di era digital. Kami menggabungkan keahlian teknologi dengan
@@ -111,7 +169,7 @@ const HomePage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FeatureCard 
-              title="Teknologi canggih berbasis AI dan IoT" 
+              title="Keahlian Teknis" 
               description="Tim ahli kami memiliki pengalaman luas dalam berbagai teknologi terkini"
               icon="CheckCircle"
               delay={100}
@@ -140,7 +198,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Our Products</span>
-            <h2 className="text-xl font-bold mb-4">Produk Unggulan</h2>
+            <h2 className="text-3xl font-bold mb-4">Produk Unggulan</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Solusi perangkat lunak terbaik untuk membantu bisnis Anda berkembang dan bersaing
             </p>
@@ -149,18 +207,18 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "ANTLIA POS (Point of Sale)",
-                description: "sistem kasir digital yang memudahkan transaksi jual beli, baik secara langsung di toko maupun secara online",
+                title: "ANTLIA CRM",
+                description: "Sistem manajemen pelanggan komprehensif dengan fitur otomatisasi dan analitik",
                 image: "/assets/product-1.jpg"
               },
               {
                 title: "ANTLIA ERP",
-                description: " sistem yang dirancang untuk membantu perusahaan dalam mengelola dan mengintegrasikan berbagai proses bisnis secara efisien",
+                description: "Solusi Enterprise Resource Planning terintegrasi untuk efisiensi operasional bisnis",
                 image: "/assets/product-2.jpg"
               },
               {
-                title: "ANTLIA WMS",
-                description: "sistem manajemen gudang yang dirancang untuk meningkatkan efisiensi operasional gudang",
+                title: "ANTLIA Analytics",
+                description: "Platform analitik data untuk mengubah data mentah menjadi wawasan bisnis yang berharga",
                 image: "/assets/product-3.jpg"
               }
             ].map((product, index) => (
@@ -203,12 +261,7 @@ const HomePage = () => {
       </section>
       
       {/* Team Section */}
-      {/* <TeamSection 
-        title="Tim Ahli Kami" 
-        subtitle="Meet Our Experts"
-        description="Didukung oleh profesional berpengalaman yang berdedikasi untuk memberikan yang terbaik"
-        members={teamMembers}
-      /> */}
+     
       
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-antlia-blue/10 to-antlia-cyan/10">
@@ -219,7 +272,7 @@ const HomePage = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-                <h2 className="text-xl font-bold mb-4">Siap untuk Transformasi Digital?</h2>
+                <h2 className="text-3xl font-bold mb-4">Siap untuk Transformasi Digital?</h2>
                 <p className="text-gray-600 mb-6 max-w-xl">
                   Mari diskusikan bagaimana ANTLIA dapat membantu bisnis Anda berkembang
                   melalui solusi teknologi yang inovatif dan efisien.
@@ -232,7 +285,7 @@ const HomePage = () => {
                   </Button>
                   <Button variant="outline" className="border-antlia-blue text-antlia-blue hover:bg-antlia-blue/10">
                     <a 
-                      href="https://wa.me/6287762877273" 
+                      href="https://wa.me/6281573635143" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center"
@@ -260,43 +313,83 @@ const HomePage = () => {
       {/* Partner Logos */}
       <LogoMarquee logos={partners} />
       
-      {/* Blog Preview Section */}
+      {/* Blog Preview Section - Updated to use real articles from Supabase */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
             <span className="subtitle block mb-2">Latest Updates</span>
-            <h2 className="text-xl font-bold mb-4">Artikel Terbaru</h2>
+            <h2 className="text-3xl font-bold mb-4">Artikel Terbaru</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Temukan informasi terbaru seputar teknologi dan inovasi digital
               di blog ANTLIA.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow duration-300 animate-on-scroll">
-              <CardHeader>
-                <CardTitle>Kenalan dengan ANTLIA: Solusi Cerdas untuk Efisiensi Bisnis di Era Digital 5.0</CardTitle>
-                <CardDescription>20 Mei 2025</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-48 overflow-hidden rounded-md mb-4">
-                  <img 
-                    src="/assets/artikel1.png" 
-                    alt="Transformasi Digital" 
-                    className="w-full h-full object-cover"
-                  />
+          {isLoadingArticles ? (
+            <div className="flex justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-antlia-blue"></div>
+            </div>
+          ) : latestArticles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {latestArticles.map((article, index) => (
+                <div key={article.id} className="gradient-border rounded-lg overflow-hidden">
+                  <Card className="border-0 h-full animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
+                    <CardHeader>
+                      <CardTitle className="line-clamp-2">{article.title}</CardTitle>
+                      <CardDescription>
+                        {new Date(article.publishedAt).toLocaleDateString('id-ID')}
+                        {article.category && (
+                          <span className="inline-block bg-antlia-blue/10 text-antlia-blue px-2 py-1 text-xs rounded-full ml-2">
+                            {article.category}
+                          </span>
+                        )}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="h-48 overflow-hidden rounded-md mb-4">
+                        {article.coverImage ? (
+                          <img 
+                            src={article.coverImage} 
+                            alt={article.title} 
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-antlia-light/30 flex items-center justify-center">
+                            <svg 
+                              xmlns="http://www.w3.org/2000/svg" 
+                              className="h-16 w-16 text-antlia-blue/50"
+                              fill="none" 
+                              viewBox="0 0 24 24" 
+                              stroke="currentColor"
+                            >
+                              <path 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth={2} 
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" 
+                              />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-gray-600 line-clamp-3">
+                        {article.excerpt}
+                      </p>
+                    </CardContent>
+                    <CardFooter>
+                      <Link to={`/artikel/${article.slug}`} className="text-antlia-blue hover:underline flex items-center">
+                        Baca selengkapnya <ChevronRight className="ml-1 w-4 h-4" />
+                      </Link>
+                    </CardFooter>
+                  </Card>
                 </div>
-                <p className="text-gray-600">
-                ANTLIA hadir sebagai wajah baru dari Techno King Indonesia, membawa semangat efisiensi dan inovasi bisnis melalui sistem POS, WMS, dan
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Link to="/artikel/kenalan-dengan-antlia-solusi-cerdas-untuk-efisiensi-bisnis-di-era-digital-50" className="text-antlia-blue hover:underline flex items-center">
-                  Baca selengkapnya <ChevronRight className="ml-1 w-4 h-4" />
-                </Link>
-              </CardFooter>
-            </Card>
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-gray-600">Belum ada artikel yang dipublikasikan</p>
+            </div>
+          )}
           
           <div className="text-center mt-12">
             <Button variant="outline" asChild>

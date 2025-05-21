@@ -291,13 +291,13 @@ const ContactPage = () => {
             <span className="subtitle block mb-2">Our Location</span>
             <h2 className="text-xl font-bold mb-4">Temukan Kami</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Kunjungi kantor kami untuk diskusi langsung dengan tim ANTLIA
+              Kunjungi kantor kami untuk diskusi langsung dengan tim ANTLIA.
             </p>
           </div>
           
           <div className="rounded-xl overflow-hidden shadow-lg h-[400px] animate-on-scroll">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0665752633857!2d106.8273991!3d-6.2478833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e604144ea3%3A0xf970e58aaaadf04!2sJl.%20Jend.%20Sudirman%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1653914958497!5m2!1sid!2sid" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5577769944894!2d106.65146037380381!3d-6.321667393667782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e4c0977ecf73%3A0x68b071ebaecdcbbc!2sThe%20Avani%20BSD%20City%20Cluster%20Nittaya!5e0!3m2!1sid!2sid!4v1747808590363!5m2!1sid!2sid" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }}
