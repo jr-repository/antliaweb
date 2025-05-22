@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
+import {
   Card,
   CardContent,
   CardHeader,
@@ -8,7 +8,14 @@ import {
   CardDescription,
   CardFooter
 } from "@/components/ui/card";
-import { ChevronRight, Phone, Mail, ArrowRight, CheckCircle } from "lucide-react";
+import {
+  ChevronRight,
+  Phone,
+  Mail,
+  ArrowRight,
+  CheckCircle,
+  ArrowUp // 🔁 Icon baru ditambahkan
+} from "lucide-react";
 import HeroCarousel from "@/components/HeroCarousel";
 import ServicesSection from "@/components/ServicesSection";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
@@ -36,7 +43,7 @@ const teamMembers = [
     position: "CEO & Founder",
     image: "/assets/team-1.jpg",
     bio: "Memiliki pengalaman 15 tahun di industri teknologi informasi dengan fokus pada solusi enterprise.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://linkedin.com ",
     email: "ahmad@antlia.id"
   },
   {
@@ -44,7 +51,7 @@ const teamMembers = [
     position: "CTO",
     image: "/assets/team-2.jpg",
     bio: "Ahli teknologi dengan spesialisasi di cloud computing dan arsitektur sistem terdistribusi.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://linkedin.com ",
     email: "siti@antlia.id"
   },
   {
@@ -52,7 +59,7 @@ const teamMembers = [
     position: "Lead Developer",
     image: "/assets/team-3.jpg",
     bio: "Pengembang senior dengan keahlian di berbagai bahasa pemrograman dan framework modern.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://linkedin.com ",
     email: "budi@antlia.id"
   },
   {
@@ -60,7 +67,7 @@ const teamMembers = [
     position: "UX Design Lead",
     image: "/assets/team-4.jpg",
     bio: "Desainer UX berpengalaman dengan fokus pada menciptakan pengalaman digital yang intuitif dan efisien.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://linkedin.com ",
     email: "maya@antlia.id"
   }
 ];
@@ -70,7 +77,30 @@ const HomePage = () => {
   const { toast } = useToast();
   const [latestArticles, setLatestArticles] = useState<Article[]>([]);
   const [isLoadingArticles, setIsLoadingArticles] = useState(true);
-  
+  const [isScrolled, setIsScrolled] = useState(false); // 🆕 State untuk deteksi scroll
+
+  // 💡 Scroll to top handler
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // 🧠 Deteksi scroll user
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Fetch latest articles from Supabase
   useEffect(() => {
     const fetchLatestArticles = async () => {
@@ -82,11 +112,9 @@ const HomePage = () => {
           .eq("status", "published")
           .order("published_at", { ascending: false })
           .limit(3);
-
         if (error) {
           throw error;
         }
-
         if (data) {
           const mappedArticles: Article[] = data.map(article => ({
             id: article.id,
@@ -106,7 +134,6 @@ const HomePage = () => {
             readingTime: article.reading_time,
             images: article.images || []
           }));
-          
           setLatestArticles(mappedArticles);
         }
       } catch (error: any) {
@@ -120,14 +147,12 @@ const HomePage = () => {
         setIsLoadingArticles(false);
       }
     };
-
     fetchLatestArticles();
   }, [toast]);
-  
+
   useEffect(() => {
     // Initialize AOS-like animations
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -138,11 +163,9 @@ const HomePage = () => {
     }, {
       threshold: 0.1
     });
-    
     animatedElements.forEach(el => {
       observer.observe(el);
     });
-    
     return () => {
       animatedElements.forEach(el => {
         observer.unobserve(el);
@@ -153,7 +176,7 @@ const HomePage = () => {
   return (
     <div className="flex flex-col w-full">
       <HeroCarousel />
-      
+
       {/* Value Proposition Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -166,33 +189,59 @@ const HomePage = () => {
               pemahaman bisnis yang mendalam.
             </p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard 
-              title="Keahlian Teknis" 
-              description="Tim ahli kami memiliki pengalaman luas dalam berbagai teknologi terkini"
-              icon="CheckCircle"
-              delay={100}
-            />
-            <FeatureCard 
-              title="Solusi Kustom" 
-              description="Kami membangun solusi yang disesuaikan dengan kebutuhan spesifik bisnis Anda"
-              icon="CheckCircle" 
-              delay={200}
-            />
-            <FeatureCard 
-              title="Dukungan 24/7" 
-              description="Layanan dukungan teknis tersedia 24 jam setiap hari untuk memastikan bisnis Anda selalu berjalan lancar"
-              icon="CheckCircle"
-              delay={300}
-            />
+            <div
+              className="rounded-lg overflow-hidden p-[2px]"
+              style={{
+                background: 'linear-gradient(135deg, #05b2fd, #6f42c1, #e17a9e)',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <FeatureCard
+                title="Keahlian Teknis"
+                description="Tim ahli kami memiliki pengalaman luas dalam berbagai teknologi terkini"
+                icon="CheckCircle"
+                delay={100}
+                className="bg-white h-full"
+              />
+            </div>
+            <div
+              className="rounded-lg overflow-hidden p-[2px]"
+              style={{
+                background: 'linear-gradient(135deg, #05b2fd, #6f42c1, #e17a9e)',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <FeatureCard
+                title="Solusi Kustom"
+                description="Memiliki solusi yang disesuaikan dengan kebutuhan bisnis Anda"
+                icon="CheckCircle"
+                delay={200}
+                className="bg-white h-full"
+              />
+            </div>
+            <div
+              className="rounded-lg overflow-hidden p-[2px]"
+              style={{
+                background: 'linear-gradient(135deg, #05b2fd, #6f42c1, #e17a9e)',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <FeatureCard
+                title="Dukungan 24/7"
+                description="Layanan teknis tersedia 24 jam agar bisnis Anda berjalan lancar"
+                icon="CheckCircle"
+                delay={300}
+                className="bg-white h-full"
+              />
+            </div>
           </div>
         </div>
       </section>
-      
+
       {/* Services Section */}
       <ServicesSection />
-      
+
       {/* Featured Products */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -203,7 +252,6 @@ const HomePage = () => {
               Solusi perangkat lunak terbaik untuk membantu bisnis Anda berkembang dan bersaing
             </p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -222,11 +270,11 @@ const HomePage = () => {
                 image: "/assets/product-3.jpg"
               }
             ].map((product, index) => (
-              <Card key={index} className="product-card overflow-hidden animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
+              <Card key={index} className="product-card overflow-hidden animate-on-scroll" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="h-52 overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.title} 
+                  <img
+                    src={product.image}
+                    alt={product.title}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                   <div className="product-overlay">
@@ -239,8 +287,8 @@ const HomePage = () => {
                 <CardContent className="p-5">
                   <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
                   <p className="text-gray-600 mb-4">{product.description}</p>
-                  <Link 
-                    to="/produk-layanan" 
+                  <Link
+                    to="/produk-layanan"
                     className="text-antlia-blue hover:underline flex items-center font-medium"
                   >
                     Lihat Detail <ArrowRight className="ml-1 w-4 h-4" />
@@ -249,7 +297,6 @@ const HomePage = () => {
               </Card>
             ))}
           </div>
-          
           <div className="text-center mt-10 animate-on-scroll">
             <Button className="bg-antlia-blue hover:bg-antlia-blue/80">
               <Link to="/produk-layanan" className="flex items-center">
@@ -259,17 +306,13 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      
-      {/* Team Section */}
-     
-      
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-antlia-blue/10 to-antlia-cyan/10">
         <div className="container mx-auto px-4">
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 relative overflow-hidden animate-on-scroll">
             <div className="absolute top-0 right-0 w-64 h-64 bg-antlia-blue/10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-antlia-cyan/10 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
-            
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
                 <h2 className="text-3xl font-bold mb-4">Siap untuk Transformasi Digital?</h2>
@@ -284,9 +327,9 @@ const HomePage = () => {
                     </Link>
                   </Button>
                   <Button variant="outline" className="border-antlia-blue text-antlia-blue hover:bg-antlia-blue/10">
-                    <a 
-                      href="https://wa.me/6281573635143" 
-                      target="_blank" 
+                    <a
+                      href="https://wa.me/6281573635143 "
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center"
                     >
@@ -296,9 +339,9 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="w-full md:w-1/3">
-                <img 
-                  src="/assets/cta-image.png" 
-                  alt="Digital Transformation" 
+                <img
+                  src="/assets/cta-image.png"
+                  alt="Digital Transformation"
                   className="w-full h-auto rounded-lg shadow-md"
                 />
               </div>
@@ -306,13 +349,13 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Testimonials */}
       <TestimonialsSlider />
-      
+
       {/* Partner Logos */}
       <LogoMarquee logos={partners} />
-      
+
       {/* Blog Preview Section - Updated to use real articles from Supabase */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -324,7 +367,6 @@ const HomePage = () => {
               di blog ANTLIA.
             </p>
           </div>
-          
           {isLoadingArticles ? (
             <div className="flex justify-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-antlia-blue"></div>
@@ -332,8 +374,15 @@ const HomePage = () => {
           ) : latestArticles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {latestArticles.map((article, index) => (
-                <div key={article.id} className="gradient-border rounded-lg overflow-hidden">
-                  <Card className="border-0 h-full animate-on-scroll" style={{animationDelay: `${index * 100}ms`}}>
+                <div
+                  key={article.id}
+                  className="rounded-lg overflow-hidden p-[2px]"
+                  style={{
+                    background: 'linear-gradient(135deg, #05b2fd, #6f42c1, #e17a9e)',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
+                  <Card className="border-0 h-full animate-on-scroll bg-white" style={{ animationDelay: `${index * 100}ms` }}>
                     <CardHeader>
                       <CardTitle className="line-clamp-2">{article.title}</CardTitle>
                       <CardDescription>
@@ -348,25 +397,25 @@ const HomePage = () => {
                     <CardContent>
                       <div className="h-48 overflow-hidden rounded-md mb-4">
                         {article.coverImage ? (
-                          <img 
-                            src={article.coverImage} 
-                            alt={article.title} 
+                          <img
+                            src={article.coverImage}
+                            alt={article.title}
                             className="w-full h-full object-cover"
                           />
                         ) : (
                           <div className="w-full h-full bg-antlia-light/30 flex items-center justify-center">
-                            <svg 
-                              xmlns="http://www.w3.org/2000/svg" 
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
                               className="h-16 w-16 text-antlia-blue/50"
-                              fill="none" 
-                              viewBox="0 0 24 24" 
+                              fill="none"
+                              viewBox="0 0 24 24"
                               stroke="currentColor"
                             >
-                              <path 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth={2} 
-                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" 
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                               />
                             </svg>
                           </div>
@@ -390,7 +439,6 @@ const HomePage = () => {
               <p className="text-gray-600">Belum ada artikel yang dipublikasikan</p>
             </div>
           )}
-          
           <div className="text-center mt-12">
             <Button variant="outline" asChild>
               <Link to="/artikel" className="flex items-center">
@@ -400,6 +448,18 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* 🔼 Tombol Scroll to Top - Tambahkan di sini */}
+      {isScrolled && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 p-3 rounded-full bg-antlia-blue text-white shadow-lg hover:bg-antlia-blue/90 transition-colors z-50"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp size={20} />
+        </button>
+      )}
+
     </div>
   );
 };
