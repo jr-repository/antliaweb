@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,20 +44,31 @@ const ContactPage = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    setFormSubmitted(true);
     
-    // Reset form after submission
+    // Prepare WhatsApp message
+    const whatsappMessage = `Halo, saya ${formData.name} dari ${formData.company || 'tidak disebutkan'}.%0A%0A` +
+      `Saya tertarik dengan layanan: ${formData.subject}%0A%0A` +
+      `Detail kontak saya:%0A` +
+      `Email: ${formData.email}%0A` +
+      `Telepon: ${formData.phone}%0A%0A` +
+      `Pesan:%0A${formData.message}`;
+    
+    // Open WhatsApp with the message
+    window.open(`https://wa.me/6281573635143?text=${whatsappMessage}`, '_blank');
+    
+    // Reset form
+    setFormSubmitted(true);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+      company: ""
+    });
+    
+    // Reset submission status after 5 seconds
     setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-        company: ""
-      });
       setFormSubmitted(false);
     }, 5000);
   };
@@ -217,6 +227,7 @@ const ContactPage = () => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
+                            required
                             className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-antlia-blue/50 focus:border-antlia-blue"
                             placeholder="+62 8xx xxxx xxxx"
                           />
@@ -246,13 +257,17 @@ const ContactPage = () => {
                           className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-antlia-blue/50 focus:border-antlia-blue"
                         >
                           <option value="">Pilih layanan</option>
-                          <option value="Pengembangan Aplikasi Kustom">Pengembangan Aplikasi Kustom</option>
-                          <option value="Konsultasi IT">Konsultasi IT</option>
-                          <option value="Cloud Migration">Cloud Migration</option>
-                          <option value="Keamanan Cyber">Keamanan Cyber</option>
-                          <option value="Pengembangan Web & Mobile">Pengembangan Web & Mobile</option>
-                          <option value="Analisis Data & BI">Analisis Data & BI</option>
-                          <option value="Lainnya">Lainnya</option>
+                          <option value="Antlia CRM">Antlia CRM</option>
+                          <option value="Antlia POS">Antlia POS</option>
+                          <option value="Antlia ERP">Antlia ERP</option>
+                          <option value="Antlia WMS">Antlia WMS</option>
+                          <option value="Antlia TMS">Antlia TMS</option>
+                          <option value="Antlia IOT">Antlia IOT</option>
+                          <option value="Antlia HRM">Antlia HRM</option>
+                          <option value="IT Consulting">IT Consulting</option>
+                          <option value="Business Operation Consulting">Business Operation Consulting</option>
+                          <option value="Excel Training Course">Excel Training Course</option>
+                          <option value="Workplace Communication Training">Workplace Communication Training</option>
                         </select>
                       </div>
                       
